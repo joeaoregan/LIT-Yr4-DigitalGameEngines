@@ -6,13 +6,15 @@ public class AmmoPickup : MonoBehaviour {
 
     public GlobalAmmo ammo;
     private AudioSource pickupAudio;
-
+    
     private void Start()
     {
         pickupAudio = GetComponent<AudioSource>();
     }
 
     IEnumerator OnTriggerEnter (Collider Player) {
+        if (Player.gameObject.tag == "Player") Debug.Log("Player picked up Ammo");
+        
         ammo.CurrentAmmo += 10;                                     // Increase the ammo
         pickupAudio.Play();                                         // Play pickup sound
 

@@ -19,11 +19,11 @@ public class GunFire : MonoBehaviour {
     public float range = 100f;
 
    // float timer;
-    Ray shootRay = new Ray();
-    RaycastHit shootHit;
+   // Ray shootRay = new Ray();
+   // RaycastHit shootHit;
     int shootableMask;
     //ParticleSystem gunParticles;
-    LineRenderer gunLine;
+   // LineRenderer gunLine;
     //AudioSource gunAudio;
    // Light gunLight;
    // float effectsDisplayTime = 0.2f;
@@ -38,27 +38,42 @@ public class GunFire : MonoBehaviour {
     {
         shootableMask = LayerMask.GetMask("Shootable");
         //gunParticles = GetComponent<ParticleSystem>();
-        gunLine = GetComponent<LineRenderer>();
+      //  gunLine = GetComponent<LineRenderer>();
        // gunLight = GetComponent<Light>();
     }
     
     //IEnumerator Start()
     private void Update()
     {
-        if ((Input.GetButton("Fire1") || Input.GetAxisRaw("FireRT") > 0) && Time.time > nextFire) {
+        if ((Input.GetButton("Fire1") || Input.GetAxisRaw("FireRT") > 0) && Time.time > nextFire)
+        {
             nextFire = Time.time + fireRate;
 
             //yield return new WaitForSeconds(audioSource.clip.length);
             //audioSource.clip = gunshot;
             Shoot();
             anim.Play("GunShot");
-           // anim.Play("CursUp");
+            //anim.Play("Reload");
+            // anim.Play("CursUp");
             //anim.Play("DownCursAnim");
             //anim.Play("LeftCursAnim");
             //anim.Play("RightCursAnim");
         }
     }
-    
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "Ammo") anim.Play("GunShot");
+        if (other.gameObject.tag == "Ammo") Debug.Log("Test 1");
+        //Debug.Log("<color=red>Test1</color>");
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag == "Ammo") Debug.Log("Test 2");
+        if (collision.gameObject.tag == "Ammo") anim.Play("Reload");
+    }
+
     void Shoot()
     {
         // timer = 0f;

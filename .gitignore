@@ -10,3 +10,4 @@
 # Kept files and directories
 !/ProjectSettings/       # Project Settings
 !/Assets/                # Assets folder
+!/Screenshots/           # Screenshots folder

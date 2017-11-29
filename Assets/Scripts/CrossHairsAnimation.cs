@@ -13,7 +13,7 @@ public class CrossHairsAnimation : MonoBehaviour {
 
     // Update is called once per frame
     void Update () {
-        if (Input.GetButtonDown("Fire1"))
+        if (Input.GetButtonDown("Fire1") || Input.GetButtonDown("Fire1G") || Input.GetAxisRaw("FireRT") > 0)
         {
             anim.Play();
         }
