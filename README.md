@@ -8,7 +8,7 @@
 ![alt text](https://raw.githubusercontent.com/joeaoregan/Yr4_Digital_Game_Engines_CA/master/Screenshots/ReportReady.png "Game Menu")
 
 
-###### Select Server Handling Two Clients
+###### Zombie Apocalypse Menu
 
 
 ### Requirements
