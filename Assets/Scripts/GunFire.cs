@@ -3,7 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class GunFire : MonoBehaviour {
-    
+
+    public GameObject flashObj;
+    public ParticleSystem flashPart;
+    public Light flashLight;
+
     public float fireRate;
     public GlobalAmmo ammo;
     public AudioClip gunAudio;
@@ -31,12 +35,15 @@ public class GunFire : MonoBehaviour {
 
     private void Start()
     {
+        //flashLight.enabled = false;
         audioSource = GetComponent<AudioSource>();
         anim = GetComponent<Animation>();
     }
     
     void Awake()
     {
+        flashObj.SetActive(false);
+        flashLight.enabled = false;
         shootableMask = LayerMask.GetMask("Shootable");
         //gunParticles = GetComponent<ParticleSystem>();
       //  gunLine = GetComponent<LineRenderer>();
@@ -49,21 +56,32 @@ public class GunFire : MonoBehaviour {
         if ((Input.GetButton("Fire1") || Input.GetAxisRaw("FireRT") > 0) && Time.time > nextFire)
         {
             nextFire = Time.time + fireRate;
-
+            
             //yield return new WaitForSeconds(audioSource.clip.length);
             //audioSource.clip = gunshot;
             Shoot();
             anim.Play("GunShot");
-            //anim.Play("Reload");
-            // anim.Play("CursUp");
-            //anim.Play("DownCursAnim");
-            //anim.Play("LeftCursAnim");
-            //anim.Play("RightCursAnim");
+            //flash.SetActive(false);
+            //flashObj.SetActive(true);
+            //flash.Play();            
         }
 
         if (Input.GetButton("Reload")) Reload();    // If reload button pressed reload
     }
-
+    
+    private IEnumerator MuzzleOff()
+    {
+        flashObj.SetActive(true);
+        flashPart.Play();
+        flashLight.enabled = true;
+        Debug.Log("Muzzle Off Function particle");
+        yield return new WaitForSeconds(0.1f);
+        Debug.Log("Muzzle Function 0.1f");
+        flashLight.enabled = false;
+        flashPart.Stop();
+        flashObj.SetActive(false);
+    }
+    
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "Ammo") anim.Play("GunShot");
@@ -81,12 +99,16 @@ public class GunFire : MonoBehaviour {
     {
         // timer = 0f;
 
+        Debug.Log("Light Off");
+
         if (ammo.CurrentAmmo > 0)
         {
             //audioSource.Play();
             ammo.CurrentAmmo -= 1;
             audioSource.clip = gunAudio;
             audioSource.volume = 1.0f;
+
+            StartCoroutine(MuzzleOff());
         }
         else
         {
