@@ -7,10 +7,16 @@ public class GlobalAmmo : MonoBehaviour {
 
     public int CurrentAmmo;
     int InternalAmmo;
+    int LoadedAmmo;
     public Text AmmoDisplay;
-    	
-	// Update is called once per frame
-	void Update () {
+
+    private void Start()
+    {
+        InternalAmmo = LoadedAmmo;
+    }
+
+    // Update is called once per frame
+    void Update () {
         InternalAmmo = CurrentAmmo;
         AmmoDisplay.text = "Ammo: " + InternalAmmo;
 	}

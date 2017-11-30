@@ -8,6 +8,7 @@ public class GunFire : MonoBehaviour {
     public GlobalAmmo ammo;
     public AudioClip gunAudio;
     public AudioClip gunEmptyAudio;
+    public AudioClip reloadAudio;
 
     private float nextFire;
     private AudioSource audioSource;
@@ -59,6 +60,8 @@ public class GunFire : MonoBehaviour {
             //anim.Play("LeftCursAnim");
             //anim.Play("RightCursAnim");
         }
+
+        if (Input.GetButton("Reload")) Reload();    // If reload button pressed reload
     }
 
     private void OnTriggerEnter(Collider other)
@@ -66,14 +69,14 @@ public class GunFire : MonoBehaviour {
         if (other.gameObject.tag == "Ammo") anim.Play("GunShot");
         if (other.gameObject.tag == "Ammo") Debug.Log("Test 1");
         //Debug.Log("<color=red>Test1</color>");
-    }
+     }
 
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.tag == "Ammo") Debug.Log("Test 2");
         if (collision.gameObject.tag == "Ammo") anim.Play("Reload");
     }
-
+    
     void Shoot()
     {
         // timer = 0f;
@@ -94,19 +97,16 @@ public class GunFire : MonoBehaviour {
         audioSource.Play();
 
 
-        // gunLight.enabled = true;
-
+        //gunLight.enabled = true;
         //gunParticles.Stop();
         //gunParticles.Play();
-
         //gunLine.enabled = true;
         //gunLine.SetPosition(0, transform.position);
 
         //shootRay.origin = transform.position;
         // shootRay.direction = transform.forward;
         /*
-        if (Physics.Raycast(shootRay, out shootHit, range, shootableMask))
-        {            
+        if (Physics.Raycast(shootRay, out shootHit, range, shootableMask)) {            
             //EnemyHealth enemyHealth = shootHit.collider.GetComponent<EnemyHealth>();
             //if (enemyHealth != null)
             //{
@@ -114,11 +114,16 @@ public class GunFire : MonoBehaviour {
             //}
             
             gunLine.SetPosition(1, shootHit.point);
-        }
-        else
-        {
+        } else {
             gunLine.SetPosition(1, shootRay.origin + shootRay.direction * range);
         }
         */
+    }
+
+    public void Reload() {
+        anim.Play("Reload");
+
+        audioSource.clip = reloadAudio;
+        audioSource.Play();
     }
 }
