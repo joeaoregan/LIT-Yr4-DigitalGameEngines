@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Ammo
   - M9
+  - Target
+  - Zombie
   layers:
   - Default
   - TransparentFX

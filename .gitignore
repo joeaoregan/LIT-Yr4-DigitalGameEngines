@@ -8,6 +8,9 @@
 !README.md
 
 # Kept files and directories
-!/ProjectSettings/       # Project Settings
-!/Assets/                # Assets folder
-!/Screenshots/           # Screenshots folder
+!/ProjectSettings/            # Project Settings
+!/Assets/                     # Assets folder
+!/Assets/Scripts/	      # Scripts folder
+!/Assets/Scripts/JavaScript/  # Scripts folder
+!/Assets/Scripts/JoeCS/	      # Scripts folder
+!/Screenshots/                # Screenshots folder
