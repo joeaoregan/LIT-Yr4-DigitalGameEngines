@@ -3,9 +3,28 @@
 /*/
 
 # Git files
-!.gitignore
+!../.gitignore
 !.gitattributes
-!README.md
+!../.README.md
+
+# Ignore These Folders
+/[Ll]ibrary/
+/[Oo]bj/
+/[Ss]criptAssemblies/
+/[Tt]emp/
+
+# Ignore These Files
+*.csproj
+*.unityproj
+*.sln
+*.suo
+*.tmp
+*.user
+*.userprefs
+*.pidb
+*.booproj
+*.svd
+*.pdb
 
 # Kept files and directories
 !/ProjectSettings/            # Project Settings
