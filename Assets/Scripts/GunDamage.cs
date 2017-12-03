@@ -15,7 +15,7 @@ public class GunDamage : MonoBehaviour {
     // Update is called once per frame
     void Update ()
     {
-        if ((Input.GetButton("Fire1") || Input.GetAxisRaw("FireRT") > 0) && Time.time > nextFire && ammo.CurrentAmmo > 0)                       // If the fire button or right trigger is pressed
+        if ((Input.GetButton("Fire1") || Input.GetAxisRaw("FireRT") > 0) && Time.time > nextFire && ammo.CurrentAmmo > 0)// If the fire button or right trigger is pressed
         {
             nextFire = Time.time + fireRate;
             RaycastHit shot;
@@ -25,8 +25,8 @@ public class GunDamage : MonoBehaviour {
                 targetDistance = shot.distance;                                                                         // Set the target distance
 
                 if (targetDistance < allowedRange)                                                                      // If the target distance is within range
-                {
-                    shot.transform.SendMessage("DeductPoints", damageAmount, SendMessageOptions.DontRequireReceiver);   // Can be called later on, with damage amount
+				{
+					shot.transform.SendMessage("DeductPoints", damageAmount, SendMessageOptions.DontRequireReceiver);   // Can be called later on, with damage amount
                 }
             }
         }

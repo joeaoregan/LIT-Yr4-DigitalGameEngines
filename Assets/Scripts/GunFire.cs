@@ -4,29 +4,29 @@ using UnityEngine;
 
 public class GunFire : MonoBehaviour {
 
-    public GameObject flashObj;
-    public ParticleSystem flashPart;
-    public Light flashLight;
+    public GameObject flashObj;							// The image to display when the gun fires
+    public ParticleSystem flashPart;					// Particles after firing gun
+    public Light flashLight;							// Light after firing gun, this can be seen reflecting off other game objects
 
-    public float fireRate;
-    public GlobalAmmo ammo;
-    public AudioClip gunAudio;
-    public AudioClip gunEmptyAudio;
-    public AudioClip reloadAudio;
+    public float fireRate = 0.25f;								// How often a Player can fire
+    public GlobalAmmo ammo;								// The amount of ammo the Player has
+    public AudioClip gunAudio;							// Sound effect for firing the gun
+    public AudioClip gunEmptyAudio;						// Sound effect when the Player fires but is out of ammo
+    public AudioClip reloadAudio;						// Sound effect when reloading the gun
 
-    private float nextFire;
-    private AudioSource audioSource;
-    private Animation anim;
+    private float nextFire;								// Sets the time the weapon can fire next, fire rate
+    private AudioSource audioSource;					// The audiosource for the gun
+    private Animation anim;								// Gun animation
     
     // Survival Shooter
-    public int damagePerShot = 20;
-    public float timeBetweenBullets = 0.15f;
-    public float range = 100f;
+    public int damagePerShot = 20;						// The damage inflicted by the gun
+ //   public float timeBetweenBullets = 0.15f;			// Time
+//    public float range = 100f;
 
    // float timer;
    // Ray shootRay = new Ray();
    // RaycastHit shootHit;
-    int shootableMask;
+    int shootableMask;									// Filter the layer the object is on, only selecting those on the shootable layer
     //ParticleSystem gunParticles;
    // LineRenderer gunLine;
     //AudioSource gunAudio;
@@ -36,14 +36,14 @@ public class GunFire : MonoBehaviour {
     private void Start()
     {
         //flashLight.enabled = false;
-        audioSource = GetComponent<AudioSource>();
-        anim = GetComponent<Animation>();
+		audioSource = GetComponent<AudioSource>();			// Initialise the audio source
+        anim = GetComponent<Animation>();					// Initialise the animation
     }
     
     void Awake()
     {
-        flashObj.SetActive(false);
-        flashLight.enabled = false;
+        flashObj.SetActive(false);							// Deactivate the gun flash
+        flashLight.enabled = false;							// Deactivate the light off from the gun firing
         shootableMask = LayerMask.GetMask("Shootable");
         //gunParticles = GetComponent<ParticleSystem>();
       //  gunLine = GetComponent<LineRenderer>();
@@ -55,18 +55,18 @@ public class GunFire : MonoBehaviour {
     {
         if ((Input.GetButton("Fire1") || Input.GetAxisRaw("FireRT") > 0) && Time.time > nextFire)
         {
-            nextFire = Time.time + fireRate;
+            nextFire = Time.time + fireRate;														// Set the time the next fire can occur to the current time + the fire rate
             
             //yield return new WaitForSeconds(audioSource.clip.length);
-            //audioSource.clip = gunshot;
+            //audioSource.clip = gunshot;	
             Shoot();
-            anim.Play("GunShot");
+			anim.Play("GunShot");																	// Play the gun shot animation (Moves the gun trigger)
             //flash.SetActive(false);
             //flashObj.SetActive(true);
             //flash.Play();            
         }
 
-        if (Input.GetButton("Reload")) Reload();    // If reload button pressed reload
+        if (Input.GetButton("Reload")) Reload();    												// If reload button pressed reload
     }
     
     private IEnumerator MuzzleOff()
