@@ -12,7 +12,7 @@ public class SelectOnInput : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		
+		buttonSelected = false;
 	}
 	
 	// Update is called once per frame

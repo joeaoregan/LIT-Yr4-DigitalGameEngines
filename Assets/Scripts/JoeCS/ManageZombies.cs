@@ -13,10 +13,8 @@ public class ManageZombies : MonoBehaviour {
 	public Text targetsText;	
 	public Text actionText;
 
-	public GameObject zombiesKilled;													// The game objective
-	public ObjectiveCounter objectiveCounter;											// Number of completed objectives
-
-	private int MAX_TARGETS = 4;
+	public GameObject zombiesKilled;															// The game objective
+	public ObjectiveCounter objectiveCounter;													// Number of completed objectives
 
 	// Update is called once per frame
 	void Update () {
@@ -27,9 +25,9 @@ public class ManageZombies : MonoBehaviour {
 			targetsText.GetComponent<Text> ().text = "Zombies Killed: " + InternalTargets + "/3";
 
 			if (currentTargets == OBJECTIVE_TARGET) {
-				zombiesKilled.SetActive (true);												// Mark the kill zombies objective as completed
-				StartCoroutine ("UpdateObjective");
-				objectiveCounter.incrementObjectives ();									// Increment the number of completed objectives
+				zombiesKilled.SetActive (true);													// Mark the kill zombies objective as completed
+				//StartCoroutine ("UpdateObjective");
+				//objectiveCounter.incrementObjectives ();										// Increment the number of completed objectives
 			}
 		}
 	}
@@ -43,7 +41,7 @@ public class ManageZombies : MonoBehaviour {
 	IEnumerator UpdateObjective(){
 		actionText.GetComponent<Text> ().text = "Objective 4:\nKill 3 Zombies Complete";
 		yield return new WaitForSeconds (2);
-		targetsText.GetComponent<Text> ().text = "";									// Reset the targets text message
+		targetsText.GetComponent<Text> ().text = "";											// Reset the targets text message
 		actionText.GetComponent<Text> ().text = "Objective 5:\nFind The Lab Door";
 		yield return new WaitForSeconds (2);
 		actionText.GetComponent<Text> ().text = "";

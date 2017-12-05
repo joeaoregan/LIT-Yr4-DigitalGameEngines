@@ -8,6 +8,7 @@ TagManager:
   - M9
   - Target
   - Zombie
+  - Level1Finish
   layers:
   - Default
   - TransparentFX

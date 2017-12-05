@@ -33,9 +33,9 @@ public class ManageTargets : MonoBehaviour {
 
 		if (currentTargets == MAX_TARGETS && objectiveCounter.getObjectiveCount() == 2) {
 			targetsDestroyed.SetActive (true);
-			StartCoroutine ("UpdateObjective");
+			//StartCoroutine ("UpdateObjective");
 			//if (objectiveCounter.getObjectiveCount() == 2)								// If 2 objectives have been complete
-				objectiveCounter.incrementObjectives ();								// Increment the number of completed objectives
+			//	objectiveCounter.incrementObjectives ();								// Increment the number of completed objectives
 		}
     }
 
