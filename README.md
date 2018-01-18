@@ -5,8 +5,12 @@
 
 ## Joe O'Regan K00203642
 
-![alt text](https://raw.githubusercontent.com/joeaoregan/Yr4_Digital_Game_Engines_CA/master/Screenshots/ReportReady.png "Game Menu")
+### 05/12/2017
 
+![alt text](https://raw.githubusercontent.com/joeaoregan/Yr4_Digital_Game_Engines_CA/master/Screenshots/GamePlay1.png "Level 1: Practice Zombies")
+###### Level 1: Practice Zombies (For Testing Weapons)
+
+![alt text](https://raw.githubusercontent.com/joeaoregan/Yr4_Digital_Game_Engines_CA/master/Screenshots/ReportReady.png "Game Menu")
 
 ###### Zombie Apocalypse Menu
 

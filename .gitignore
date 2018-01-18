@@ -1,35 +1,45 @@
-# Ignore everything except what we want.
-/*
-/*/
-
 # Git files
-!../.gitignore
-!.gitattributes
-!../.README.md
+.gitignore
+.gitattributes
+README.md
 
-# Ignore These Folders
-/[Ll]ibrary/
-/[Oo]bj/
-/[Ss]criptAssemblies/
-/[Tt]emp/
+# Script files
+!*.cs
+!*.js
+!*.asset
+
+# Include These Folders
+!/Assets/Scripts/								# Scripts folder
+!/Assets/Scripts/JavaScript/					# Javascripts Scripts folder
+!/Assets/Scripts/JavaScript/InteractablesJoe/
+!/Assets/Scripts/JoeCS/							# Scripts created from scratch folder
+!/Assets/Scripts/JoeCS/Menu/					# Menu Scripts folder
+!/Assets/Scripts/JoeCS/UI/
+!/Assets/Scripts/JoeCS/Zombie/
+!/Assets/Scripts/Menu/
+!/Assets/Scripts/Scripts/
+!/ProjectSettings/								# Settings for input etc.
+!/Screenshots/                					# Screenshots folder
 
 # Ignore These Files
-*.csproj
-*.unityproj
-*.sln
-*.suo
-*.tmp
-*.user
-*.userprefs
-*.pidb
-*.booproj
-*.svd
-*.pdb
+*.meta
+/Assets/*.asset
 
-# Kept files and directories
-!/ProjectSettings/            # Project Settings
-!/Assets/                     # Assets folder
-!/Assets/Scripts/	      # Scripts folder
-!/Assets/Scripts/JavaScript/  # Scripts folder
-!/Assets/Scripts/JoeCS/	      # Scripts folder
-!/Screenshots/                # Screenshots folder
+# Ignore These Folders
+/Assets/Animation/
+/Assets/Audio/
+/Assets/Background Objects/
+/Assets/Characters/
+/Assets/Door/
+/Assets/Fonts/
+/Assets/Materials/
+/Assets/Models/
+/Assets/Objects/
+/Assets/Particles/
+/Assets/Prefabs/
+/Assets/Scenes/
+/Assets/Standard Assets/
+/Assets/Test/
+/Assets/Textures/
+/Assets/Textures and Sprites/
+
