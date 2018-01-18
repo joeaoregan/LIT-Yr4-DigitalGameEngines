@@ -11,7 +11,10 @@ public class ManageScore : MonoBehaviour {
     public Text scoreNumText;											// UI display the score
 	private int levelIndex;												// Current level of the game (build index)
 
+	private Animation anim;												// Animate the score text
+
 	void Start() {
+		anim = scoreNumText.gameObject.GetComponent<Animation>();		// Get animation component
 		levelIndex = SceneManager.GetActiveScene ().buildIndex;
 
 		if (levelIndex > 3)
@@ -31,5 +34,10 @@ public class ManageScore : MonoBehaviour {
 
 	public void UpdateScore(int amount){
 		currentScore += amount;
+	}
+
+	public void BonusScore(int amount){
+		currentScore += amount;
+		anim.Play("ScoreNumberText");									// Animate the text
 	}
 }

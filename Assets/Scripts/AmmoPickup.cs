@@ -33,7 +33,8 @@ public class AmmoPickup : MonoBehaviour {
 			if (Player.GetComponent<WeaponSelect>().GunActive()) 
 				gun.Reload();
 
-            ammo.CurrentAmmo += 10;                                     // Increase the ammo
+            //ammo.CurrentAmmo += 10;                                   // Increase the ammo
+			ammo.AddAmmo(10);											// Add 10 to ammo and animate text
             pickupAudio.Play();                                         // Play pickup sound
 
             yield return new WaitForSeconds(pickupAudio.clip.length);   // Wait for the sound to play then
@@ -43,7 +44,7 @@ public class AmmoPickup : MonoBehaviour {
         else
             Debug.Log("Player can pick up ammo after collecting gun");
 
-		//if (numObjectives.getObjectiveCount () == 1) {					// If we are looking to complete the 2nd objective (pick up ammo)
+		//if (numObjectives.getObjectiveCount () == 1) {				// If we are looking to complete the 2nd objective (pick up ammo)
 		//	getAmmoObjective.SetActive (true);							// Mark the get ammo objective as complete
 		//}
     }

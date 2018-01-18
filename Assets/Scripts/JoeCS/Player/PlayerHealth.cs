@@ -33,7 +33,7 @@ public class PlayerHealth : MonoBehaviour
 
     void Awake ()
 	{
-		PlayerPrefs.SetInt("Health", startingHealth);	// Reset the health
+		//PlayerPrefs.SetInt("Health", startingHealth);					// Test: Reset the health
 
 		anim = GetComponent <Animator> ();
         playerAudio = GetComponent <AudioSource> ();

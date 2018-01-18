@@ -9,11 +9,17 @@ public class GlobalAmmo : MonoBehaviour {
     public int CurrentAmmo;
     int InternalAmmo;
     int LoadedAmmo = 10;
-    public Text AmmoDisplay;
+    public Text AmmoText;
+
+	private int totalAmmo;
 
 	private int level;
+	private Animation anim;
 
-    private void Start() {
+	private void Start() {
+		totalAmmo = 0;
+		//anim = AmmoText.GetComponent<Animation>();			// Get The AmmoText animation
+		anim = AmmoText.gameObject.GetComponent<Animation>();
         InternalAmmo = LoadedAmmo;
 
 		level = SceneManager.GetActiveScene ().buildIndex;
@@ -24,8 +30,18 @@ public class GlobalAmmo : MonoBehaviour {
     // Update is called once per frame
     void Update () {
         InternalAmmo = CurrentAmmo;
-        AmmoDisplay.text = "Ammo: " + InternalAmmo;
+		AmmoText.text = "Ammo: " + InternalAmmo;
 	}
 
 	public int getAmmo(){  return CurrentAmmo; }			// used to save the ammo between levels
+
+	public void AddAmmo(int amount){
+		CurrentAmmo += amount;
+		anim.Play("HUDCanvasPanelTargetsText");				// Animate the text
+		totalAmmo += amount;
+	}
+
+	public int GetTotalAmmo (){
+		return totalAmmo;
+	}
 }

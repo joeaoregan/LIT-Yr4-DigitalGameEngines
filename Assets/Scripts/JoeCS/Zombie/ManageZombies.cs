@@ -5,22 +5,24 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;	// Text
 
 public class ManageZombies : MonoBehaviour {
-	
+
+	//public Text headshotText;
 	public int currentTargets;
 	public int InternalTargets;
 	public Text targetsText;	
 	//public Text actionText;
-
 	public GameObject zombiesKilled;																		// The game objective
 	public ObjectiveCounter objectiveCounter;																// Number of completed objectives
 
 	private int OBJECTIVE_TARGET;
 	private int zombieCount;
-
-	private Text infoMsg;
+	//private Text infoMsg;
+	private Animation anim;
+	private int headshotCount;
 
 	void Start(){
-		infoMsg = GameObject.FindWithTag ("InfoMessage").GetComponent<Text> ();
+		anim = targetsText.gameObject.GetComponent<Animation>();											// Initialise the animation
+		//infoMsg = GameObject.FindWithTag ("InfoMessage").GetComponent<Text> ();								// Find the information/action text object
 
 		if (SceneManager.GetActiveScene ().buildIndex == 3) {
 			OBJECTIVE_TARGET = 3;																			// Level 1
@@ -37,6 +39,7 @@ public class ManageZombies : MonoBehaviour {
 		}
 
 		zombieCount = PlayerPrefs.GetInt ("ZombieCount");
+		headshotCount = PlayerPrefs.GetInt ("HeadshotCount");
 	}
 
 	// Update is called once per frame
@@ -55,35 +58,52 @@ public class ManageZombies : MonoBehaviour {
 	}
 
 	public void incrementZombies() {
-		if (currentTargets < OBJECTIVE_TARGET)
+		if (currentTargets < OBJECTIVE_TARGET) {
 			currentTargets += 1;	
-		
+			anim.Play("HUDCanvasPanelTargetsText");							// Animate the text
+		}
+
 		ZombieCount ();														// Increment total zombies killed
 	}
 
 	public void incrementZombieHeadshots() {
 		if (currentTargets < OBJECTIVE_TARGET) {
 			currentTargets += 1;		
-			StartCoroutine (HeadShotMsg());
+			anim.Play("HUDCanvasPanelTargetsText");							// Animate the text
+			//StartCoroutine (HeadShotMsg());
+			HeadshotCount();												// Increment and store the number of headshots
 		}
 
 		ZombieCount ();														// Increment total zombies killed
 	}
-
+	/*
+	// Replaced with animated headshot text
 	IEnumerator HeadShotMsg() {
 		//actionText.GetComponent<Text> ().text = "Headshot 50";			// Display headshot message
-		infoMsg.GetComponent<Text> ().text = "Headshot 50";					// Display headshot message
+		//infoMsg.GetComponent<Text> ().text = "Headshot 50";					// Display headshot message
+		//headshotText.text = "Headshot " + headshotCount;
 		yield return new WaitForSeconds (2);								// Show on screen for specified time
 		//actionText.GetComponent<Text> ().text = "";						// Then clear the message
 		infoMsg.GetComponent<Text> ().text = "";							// Then clear the message
 	}
+	*/
 
+	// Total zombie kills
 	void ZombieCount(){		
 		zombieCount += 1;
 		PlayerPrefs.SetInt ("ZombieCount", zombieCount);
 	}
-
 	public int totalZombieKills(){
 		return zombieCount;
 	}
+
+	// Total headshots
+	void HeadshotCount(){		
+		headshotCount += 1;
+		PlayerPrefs.SetInt ("HeadshotCount", headshotCount);
+	}
+	public int totalHeadshots(){
+		return headshotCount;
+	}
+
 }

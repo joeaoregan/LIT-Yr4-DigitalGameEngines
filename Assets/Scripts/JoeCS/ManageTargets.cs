@@ -25,7 +25,10 @@ public class ManageTargets : MonoBehaviour {
 
 	private Text infoMsg;
 
+	private Animation anim;
+
 	void Start () {
+		anim = targetsText.gameObject.GetComponent<Animation>();						// Initialise the animation
 		infoMsg = GameObject.FindWithTag ("InfoMessage").GetComponent<Text> ();
 	}
 
@@ -51,6 +54,7 @@ public class ManageTargets : MonoBehaviour {
 	public void IncrementTargets() {
 		if (currentTargets < MAX_TARGETS)
 			currentTargets += 1;														// Add 1 to the number of destroyed targets
+		anim.Play("HUDCanvasPanelTargetsText");											// Animate the text
 	}
 
 	IEnumerator UpdateObjective(){

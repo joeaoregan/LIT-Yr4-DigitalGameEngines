@@ -13,7 +13,7 @@ public class ZombieHealth : MonoBehaviour {
 
 	public Slider healthBar;
 
-	//public Canvas hideCanvas;
+	public Canvas hideCanvas;
 
 	//public GameObject healthBarHide;
 
@@ -31,14 +31,28 @@ public class ZombieHealth : MonoBehaviour {
 	public bool isAlive() { return alive; }
 	public void setDead() {	alive = false; }
 
-	GameObject gc;											// Game Controller
+	private GameObject gc;									// Game Controller
+
+	//private Animation anim;									// Animate the health bar canvas
+	private Animator animator;								// Animate the health bar canvas
+
+	public void HeadShot () {
+		setHealth (0);
+		animator.SetTrigger("Headshot");
+	}
 
 	public void setHealth(int health) { 
 		currentHealth = health; 
 		healthBar.value = currentHealth;					// Set the healthbar value
+		//hideCanvas.gameObject.SetActive(false);
+		//if (currentHealth <= 0)
+		//	anim.Play("BloodStain");						// Show score and bloodstain instead of hiding canvas
+		//	animator.SetTrigger("Headshot");
 	}
 
 	void Start(){
+		//anim = hideCanvas.gameObject.GetComponent<Animation>();
+		animator = hideCanvas.gameObject.GetComponent<Animator>();
 		//hideCanvas = GameObject.GetComponent<Canvas> ();
 
 		zombieAudio = GetComponent<AudioSource> ();			// Get the audio source component
@@ -85,10 +99,13 @@ public class ZombieHealth : MonoBehaviour {
 		{
 			//healthBar.gameObject.SetActive (false);
 			StartCoroutine (Death ());						// Kill the zombie
+			//anim.Play("BloodStain");						// Show score and bloodstain instead of hiding canvas
 		}
 	}
 
 	IEnumerator Death(){
+		gc.GetComponent<ManageScore> ().BonusScore (25);
+
 		alive = false;
 		//Destroy (healthBar);
 		//Debug.Log ("health bar");
@@ -101,6 +118,8 @@ public class ZombieHealth : MonoBehaviour {
 
 		//hideCanvas.enabled = false;
 		//hideCanvas.gameObject.SetActive(false);
+		//anim.Play("BloodStain");							// Show score and bloodstain instead of hiding canvas
+		animator.SetTrigger("Dead");
 		//healthBarHide.SetActive(false);
 		//healthBarHide.gameObject.SetActive (false);
 		//healthBarHide.gameObject.enabled = false;

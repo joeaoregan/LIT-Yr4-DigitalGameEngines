@@ -11,6 +11,8 @@ public class DestroyTargetScript : MonoBehaviour {
 	public ManageTargets target;
 
 	public Slider healthBar;
+
+	public TargetScoreboard targetScoreboard;
     
     void Update()    {
         if (enemyHealth <= 0)                   			// If the enemies health has run out
@@ -27,6 +29,7 @@ public class DestroyTargetScript : MonoBehaviour {
     {
         enemyHealth -= DamageAmount;            			// Decrement enemy health
 		healthBar.value = enemyHealth;
+		targetScoreboard.IncrementHits ();
     }
 }
 

@@ -20,7 +20,12 @@ public class GunFire : MonoBehaviour {
     
     public int damagePerShot = 20;						// The damage inflicted by the gun
 
+	//private GameObject gc;
     //int shootableMask;								// Filter the layer the object is on, only selecting those on the shootable layer
+
+	private int TargetShots;
+
+	public ObjectiveCounter objectiveCounter;
 
     private void Start()
     {
@@ -29,7 +34,8 @@ public class GunFire : MonoBehaviour {
     }
     
     void Awake()
-    {
+	{
+		//gc = GameObject.FindWithTag ("GameController");	// Get the game controller
         flashObj.SetActive(false);						// Deactivate the gun flash
         flashLight.enabled = false;						// Deactivate the light off from the gun firing
         //shootableMask = LayerMask.GetMask("Shootable");
@@ -90,6 +96,8 @@ public class GunFire : MonoBehaviour {
             audioSource.volume = 1.0f;
 
             StartCoroutine(MuzzleOff());
+
+			TargetPracticeShots();
         }
         else
         {
@@ -106,4 +114,13 @@ public class GunFire : MonoBehaviour {
         audioSource.clip = reloadAudio;
         audioSource.Play();
     }
+
+	private void TargetPracticeShots(){
+		if (objectiveCounter.getObjectiveCount () < 3)
+			TargetShots++;
+	}
+
+	public int ShotsFired(){
+		return TargetShots;
+	}
 }

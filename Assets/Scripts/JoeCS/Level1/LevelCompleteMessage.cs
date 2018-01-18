@@ -12,6 +12,8 @@ public class LevelCompleteMessage : MonoBehaviour {
 	public Text zombiesText;
 	public Text scoreText;
 
+	public Text levelTitle;
+
 	//public ObjectiveCounter objectiveCount;
 
 	GameObject gc;
@@ -27,9 +29,11 @@ public class LevelCompleteMessage : MonoBehaviour {
 		if (SceneManager.GetActiveScene ().buildIndex == 3) {
 			levelText.text = "Level 1 Complete\n" + name;
 			objectivesText.text = "Objectives 5/5";
+			levelTitle.text = "Level\n2";
 		} else if (SceneManager.GetActiveScene ().buildIndex == 4) {
 			levelText.text = "Level 2 Complete\n" + name;	
 			objectivesText.text = "Objectives 2/2";	
+			levelTitle.text = "Level\n3";
 		} else if (SceneManager.GetActiveScene ().buildIndex == 5) {
 			levelText.text = "Level 3 Complete\n" + name;
 			objectivesText.text = "Objectives 4/4";

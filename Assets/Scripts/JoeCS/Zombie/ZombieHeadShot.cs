@@ -7,8 +7,7 @@ public class ZombieHeadShot : MonoBehaviour {
 
 	//public AudioSource audio;
 	public AudioClip shotFX;
-
-	AudioSource audio1;														// Use zombies main audiosource instead
+	public Canvas headshotCanvas;											// Canvas to display headshot text
 
     public int zombieHealth = 5;                							// Default enemy health value set to 15
 
@@ -18,11 +17,14 @@ public class ZombieHeadShot : MonoBehaviour {
 
 	//public Text actionText;												// Canvas action text
     
-	GameObject gc;
+	private GameObject gc;													// Game controller
+	private Animator animator;												// Animate the headshot text
+	private AudioSource audio1;												// Use zombies main audiosource instead
 
 	void Start(){
-		gc = GameObject.FindWithTag ("GameController");
-		audio1 = destroyZombie.GetComponent<AudioSource> ();
+		animator = headshotCanvas.gameObject.GetComponent<Animator>();		// Find animator on headshot canvas	
+		gc = GameObject.FindWithTag ("GameController");						// Get the game controller
+		audio1 = destroyZombie.GetComponent<AudioSource> ();				// Get the audio source component
 	}
 
 	/*
@@ -41,13 +43,16 @@ public class ZombieHeadShot : MonoBehaviour {
     void DeductPoints(int DamageAmount)
     {
 		if (destroyZombie.GetComponent<ZombieHealth> ().currentHealth > 0 && destroyZombie.GetComponent<ZombieHealth>().isAlive()) {
-			Debug.Log("<color=green>HEADSHOT!!!</color>");
+
+			gc.GetComponent<ManageScore> ().BonusScore (50);				// Replaces score script on zombie head
+
+			//Debug.Log("<color=green>HEADSHOT!!!</color>");
 
 			zombieHealth -= DamageAmount;            						// Decrement enemy health
 			audio1.clip = shotFX;											// Load the effect into the audio source
 			audio1.Play ();													// Play the effect
 			StartCoroutine (BloodSplatter ());
-			destroyZombie.GetComponent<ZombieHealth> ().setHealth(0);		// Kill the Zombie
+			destroyZombie.GetComponent<ZombieHealth> ().HeadShot();			// Kill the Zombie, set health 0, play animation
 			destroyZombie.GetComponent<ZombieHealth> ().setDead();			// Kill the Zombie
 		}
     }
@@ -56,7 +61,8 @@ public class ZombieHeadShot : MonoBehaviour {
 	 	1 headshot needed to kill Zombie
  	*/
 	IEnumerator BloodSplatter(){
-		destroyZombie.GetComponent<Animator> ().SetTrigger ("HeadShot");
+		animator.SetTrigger("Headshot");									// Trigger the headshot text animation
+		destroyZombie.GetComponent<Animator> ().SetTrigger ("HeadShot");	// Play headshot animation
 
 		bloodSplatter.SetActive (true);
 		//yield return new WaitForSeconds (0.4f);							// Display the particle for the specified time

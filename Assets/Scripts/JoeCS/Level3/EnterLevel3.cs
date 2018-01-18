@@ -10,6 +10,6 @@ public class EnterLevel3 : MonoBehaviour {
 		if (name == "")
 			name = "Gertrude";
 
-
+		//PlayerPrefs.GetInt ("Health");	// Updated in Player Health script
 	}
 }
