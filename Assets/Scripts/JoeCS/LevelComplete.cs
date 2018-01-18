@@ -1,11 +1,15 @@
-﻿using System.Collections;
+﻿// Joe O'Regan
+// Levels 1 and 2
+// Handle Progressing Between Levels When Level Complete
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class LevelComplete : MonoBehaviour {
 
-	public Animator fadeToNextLevel;
+	public Animator levelCompleteAnimation;
 	public Canvas playerHUD;
 
 	GameObject player;
@@ -31,7 +35,7 @@ public class LevelComplete : MonoBehaviour {
 			//SceneManager.LoadScene(5);							// Load level 3
 
 			playerHUD.enabled = false;
-			fadeToNextLevel.SetTrigger("Fade");
+			levelCompleteAnimation.SetTrigger("Fade");
 		}
 	}
 }

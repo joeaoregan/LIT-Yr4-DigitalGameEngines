@@ -1,25 +1,38 @@
-﻿using System.Collections;
+﻿// Joe O'Regan
+// Level 3
+// Objective 1 : Kill Zombies
+
+// I was using objects actived/deactivated to communicate between JS and C# scripts up until I replaced most of the JS
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class L3Objective1KillZombies : MonoBehaviour {
 
-//	public Text actionText;																			// Canvas action text
-	public ObjectiveCounter objectiveCounter;														// Number of objectives completed
+	//public Text actionText;																		// Canvas action text
+	//public ObjectiveCounter objectiveCounter;														// Number of objectives completed
 
 	private Text infoMsg;																			// Replaces actionText, for displaying information messages
+	private GameObject gc;																			// Game controller
 
 	// Use this for initialization
 	void Start () {
+		gc = GameObject.FindWithTag ("GameController");												// Locate game controller
 		infoMsg = GameObject.FindWithTag ("InfoMessage").GetComponent<Text> ();						// Locate the information text object
-		objectiveCounter.incrementObjectives ();													// Increment the number of complete objectives
+		//objectiveCounter.incrementObjectives ();													// Increment the number of complete objectives
+		if (!gc.GetComponent<ObjectiveComplete> ().ZombiesKilled())									// If the objective isn't already completed
+			gc.GetComponent<ObjectiveComplete> ().SetZombiesKilled (true);							// Mark the objective as complete, and increment the number of completed objectives
+
+		Debug.Log ("L3Objective1KillZombies: activated");
+
 		StartCoroutine(ObjectiveComplete());
 	}
 
 	IEnumerator ObjectiveComplete () {
-		GameObject gc = GameObject.FindWithTag ("GameController");
-		gc.GetComponent<ObjectiveComplete> ().SetZombiesKilled (true);
+		//GameObject gc = GameObject.FindWithTag ("GameController");
+		//gc.GetComponent<ObjectiveComplete> ().SetZombiesKilled (true);
 
 		infoMsg.GetComponent<Text> ().text = "Objective 1:\nKill 10 Zombies Complete";				// Display objective complete message
 		yield return new WaitForSeconds (2);														// Wait for the amount of time

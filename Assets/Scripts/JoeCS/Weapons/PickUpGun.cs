@@ -60,6 +60,7 @@ public class PickUpGun : MonoBehaviour {
 		ammoText.gameObject.SetActive (true);						// Show the ammo count text on UI panel
 		targetText.gameObject.SetActive (true);						// Show the targets to kill on UI panel
 		hasGunObjective.gameObject.SetActive (true);				// Activate the hasGun objective object
+		gc.GetComponent<ObjectiveComplete>().SetHasGun(true);		// Mark the objective complete, and increment completed objectives
 
 		pickupAudio.Play();                                        	// play the sound effect
 

@@ -1,4 +1,8 @@
-﻿using UnityEngine;
+﻿// Joe O'Regan
+// All Levels
+// Handle player damage, and death
+
+using UnityEngine;
 using UnityEngine.UI;   // To use UI components
 using System.Collections;
 using UnityEngine.SceneManagement;
@@ -18,7 +22,7 @@ public class PlayerHealth : MonoBehaviour
     public Color flashColour = new Color(1f, 0f, 0f, 0.1f); // Red, and mostly transparent
 
 	public Canvas playerHUD;			// Disable when fade to dead animation enabled
-	public Animator fadeToDead;			// Show player has died message when player has been killed
+	public Animator deathAnimation;		// Show player has died message when player has been killed
 
     Animator anim;
     AudioSource playerAudio;
@@ -105,7 +109,7 @@ public class PlayerHealth : MonoBehaviour
 
 		playerHUD.enabled = false;
 		//SceneManager.LoadScene (2);														// Go to menu
-		fadeToDead.SetTrigger("Fade");
+		deathAnimation.SetTrigger("Fade");
 		//Debug.Log ("CHANGE SCENE XXXXXXXXXXXXXXXXXXXXX");
 
 		//GameObject.Find("Player").GetComponent<FirstPersonController>().enabled = false;	// Don't allow player to move when dead/dying by moving mouse

@@ -1,4 +1,11 @@
-﻿using System.Collections;
+﻿// Joe O'Regan
+// Level 3
+// Close Zombie Spawn Point Doors
+
+// Close the door if the button is active
+// And deactivate the spawn point
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -30,11 +37,16 @@ public class CloseZombieSpawnDoor : MonoBehaviour {
 
 	void OnMouseOver() {
 		if (distanceTo < 2.0f) {
-			infoMsg.text = "Press Action Button";
-			StartCoroutine ("ClearText");
-
-			if(Input.GetButtonDown("Action") && doorSwitch.activeInHierarchy) {
-				CloseDoor();
+			if (Input.GetButtonDown ("Action") && doorSwitch.activeInHierarchy && !door.activeInHierarchy) { // if the switch is turned on, and the door is not already active (Otherwise keeps playing sound every time button pressed
+				infoMsg.text = "Press Action Button To Open";
+				StartCoroutine ("ClearText");
+				CloseDoor ();
+			} else if (!doorSwitch.activeInHierarchy) {
+				infoMsg.text = "Complete First Objective To Activate";
+				StartCoroutine ("ClearText");
+			}else if (door.activeInHierarchy) {
+				infoMsg.text = "The Door Is Jammed Shut";
+				StartCoroutine ("ClearText");
 			}
 		}
 	}

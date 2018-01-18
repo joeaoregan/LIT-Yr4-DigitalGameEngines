@@ -1,4 +1,10 @@
-﻿using System.Collections;
+﻿// Joe O'Regan
+// Level 1
+// Objective 3: Destroy the targets
+
+// Stuff that happens when the objective is complete
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -6,7 +12,7 @@ using UnityEngine.UI;
 public class L1Objective3Targets : MonoBehaviour {
 
 	//public Text actionText;																// Canvas action text
-	public ObjectiveCounter objectiveCounter;												// Number of objectives completed
+	//public ObjectiveCounter objectiveCounter;												// Number of objectives completed
 
 	public Camera zombieCam;																// Camera positioned overlooking zombies in sleeping quarters
 	public Camera playerCam;																// FPS camera
@@ -16,13 +22,16 @@ public class L1Objective3Targets : MonoBehaviour {
 	public Text targetHintText;																// Display hint on CCTV screen in storage area (ammo and target use same camera)
 	public Text zombieHintText;																// Display hint on CCTV screen in storage area
 
-	private Text infoMsg;																	// Replaces actionText			
+	private Text infoMsg;																	// Replaces actionText	
+	private GameObject gc;																	// Game controller
 
 	// Use this for initialization
 	void Start () {
+		gc = GameObject.FindWithTag ("GameController");										// Locate the game controller
 		infoMsg = GameObject.FindWithTag ("InfoMessage").GetComponent<Text> ();				// Find the information message object
 		StartCoroutine ("ObjectiveComplete");
-		objectiveCounter.incrementObjectives ();											// Increment the number of complete objectives
+		//objectiveCounter.incrementObjectives ();											// Increment the number of complete objectives
+		gc.GetComponent<ObjectiveComplete>().SetTargetsDestroyed(true);						// Mark the objective complete, increment completed objectives	
 		targetHintText.enabled = false;														// Hide the ammo hint
 		zombieHintText.enabled = true;														// Show the zombie hint
 	}

@@ -1,12 +1,19 @@
-﻿using System.Collections;
+﻿// Joe O'Regan
+// Level 3
+// Objective 2: Close the zombie spawning doors
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class L3Objective2Doors : MonoBehaviour {
 
-	public GameObject door1;
-	public GameObject door2;
+	//public GameObject door1;
+	//public GameObject door2;
+
+	public GameObject[] doors;
+
 	public GameObject labDoor;
 
 //	public Text actionText;
@@ -19,27 +26,46 @@ public class L3Objective2Doors : MonoBehaviour {
 
 	private Text infoMsg;																	// Replaces actionText, for displaying information messages
 
-	GameObject gc;
+	bool doorsAllActive;
+
+	private GameObject gc;																	// Game controller
 
 	// Use this for initialization
 	void Start () {
 		infoMsg = GameObject.FindWithTag ("InfoMessage").GetComponent<Text> ();				// Locate the information text object
-		gc = GameObject.FindWithTag ("GameController");
+		gc = GameObject.FindWithTag ("GameController");										// Locate the game controller
 	}
 	
 	// Update is called once per frame
-	void Update () {		
-		if (door1.activeInHierarchy && door2.activeInHierarchy && !gc.GetComponent<ObjectiveComplete> ().doorsClosed())	{	// If the doors to the zombie spawn points are closed
-			GameObject.FindWithTag ("GameController").GetComponent<ObjectiveComplete> ().setDoorsClosed (true);				// Set the gamecontroller variable true
+	void Update () {
+		doorsAllActive = true;
 
-			objectiveCounter.incrementObjectives ();																		// Increment the number of complete objectives
+		foreach (GameObject door in doors) {
+			if (!door.activeInHierarchy) doorsAllActive = false;							// If any door is not active, set this boolean value false		
+			if (doors[0].activeInHierarchy) Debug.Log("<color=green>Door 1 Closed</color>");
+			if (doors[1].activeInHierarchy) Debug.Log("<color=green>Door 2 Closed</color>");
+			if (doors[2].activeInHierarchy) Debug.Log("<color=green>Door 3 Closed</color>");				
+		}
+
+		//for (int i = 0; i < doors.Length; i++) {
+		//	if (!doors[i].activeInHierarchy) doorsAllActive = false;							// If any door is not active, set this boolean value false	
+		//}
+
+		if (doorsAllActive)
+			Debug.Log ("L3Objective2Doors: Doors All Active");
+
+		if (doorsAllActive && !gc.GetComponent<ObjectiveComplete> ().doorsClosed ()) {
+			//}
+			//if (door1.activeInHierarchy && door2.activeInHierarchy && !gc.GetComponent<ObjectiveComplete> ().doorsClosed())	{	// If the doors to the zombie spawn points are closed	// Changed to any amount of spawn points
+			GameObject.FindWithTag ("GameController").GetComponent<ObjectiveComplete> ().setDoorsClosed (true);				// Set the gamecontroller variable true
+			//objectiveCounter.incrementObjectives ();																		// Increment the number of complete objectives
 
 			StartCoroutine (ObjectiveComplete ());
 		}
 	}
 
 	IEnumerator ObjectiveComplete(){
-		gc.GetComponent<ObjectiveComplete> ().SetZombiesKilled (true);
+		//gc.GetComponent<ObjectiveComplete> ().SetZombiesKilled (true);
 
 		infoMsg.text = "Objective 2:\nClose Doorways To Great Hall Complete";
 		yield return new WaitForSeconds(2);

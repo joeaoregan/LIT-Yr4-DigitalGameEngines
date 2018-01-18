@@ -5,11 +5,11 @@ using UnityEngine.UI;
 
 public class L3Objective3GetToLab : MonoBehaviour {
 
-	GameObject player;																// Get the player
-	GameObject gc;																	// Get the game controller
+	private GameObject player;														// Get the player
+	private GameObject gc;															// Get the game controller
 
 //	public Text actionText;															// Display a message for the player
-	public ObjectiveCounter objectiveCounter;
+	//public ObjectiveCounter objectiveCounter;
 
 	private Text infoMsg;															// Replaces actionText, for displaying information messages
 
@@ -24,7 +24,7 @@ public class L3Objective3GetToLab : MonoBehaviour {
 	{
 		if(other.gameObject == player)                          							
 		{
-			objectiveCounter.incrementObjectives ();
+			//objectiveCounter.incrementObjectives ();
 			StartCoroutine (ObjectiveComplete ());
 		}
 	}

@@ -1,4 +1,8 @@
 ﻿/*
+ 	Joe O'Regan
+ 	Level 1
+ 	Objective 3: When finished open the door to the room with the zombies
+ 	
 	When the targets objective is complete,
 	Open the zombie room door
 */

@@ -1,4 +1,9 @@
-﻿using System.Collections;
+﻿// Joe O'Regan
+// Script to fire the gun
+// Modified from original Jimmy Vegas FPS & Unity Survival Shooter tutorials
+// Supports Keyboard, Mouse, and Gamepad (Tested on Xbox One S controller)
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -20,22 +25,25 @@ public class GunFire : MonoBehaviour {
     
     public int damagePerShot = 20;						// The damage inflicted by the gun
 
+	private GameObject gc;								// Get the game controller
+
 	//private GameObject gc;
     //int shootableMask;								// Filter the layer the object is on, only selecting those on the shootable layer
 
 	private int TargetShots;
 
-	public ObjectiveCounter objectiveCounter;
+	//public ObjectiveCounter objectiveCounter;			// Moved to game controller
 
     private void Start()
-    {
+	{
+		gc = GameObject.FindWithTag ("GameController");	// Locate game controller
 		audioSource = GetComponent<AudioSource>();		// Initialise the audio source
         anim = GetComponent<Animation>();				// Initialise the animation
     }
     
     void Awake()
 	{
-		//gc = GameObject.FindWithTag ("GameController");	// Get the game controller
+		//gc = GameObject.FindWithTag ("GameController");// Get the game controller
         flashObj.SetActive(false);						// Deactivate the gun flash
         flashLight.enabled = false;						// Deactivate the light off from the gun firing
         //shootableMask = LayerMask.GetMask("Shootable");
@@ -55,6 +63,17 @@ public class GunFire : MonoBehaviour {
             
             Shoot();
 			anim.Play("GunShot");	
+
+			// test zombie pause
+			//bool zombiesPaused = gc.GetComponent<ManageZombies> ().ZombiesPaused ();			// Are the zombies paused from moving
+			//if (!zombiesPaused) anim.SetTrigger ("Walk");										// Set to idle animation loop
+
+			//if (!zombiesPaused)
+			//	gc.GetComponent<ManageZombies> ().PauseZombies (!zombiesPaused);
+			//else 
+				//gc.GetComponent<ManageZombies> ().PauseZombies (!zombiesPaused);
+
+			//GameObject.FindWithTag ("Player").GetComponent<Ready> ().SetReady (true);
         }
 
         if (Input.GetButton("Reload")) Reload();    												// If reload button pressed reload
@@ -116,7 +135,7 @@ public class GunFire : MonoBehaviour {
     }
 
 	private void TargetPracticeShots(){
-		if (objectiveCounter.getObjectiveCount () < 3)
+		if (gc.GetComponent<ObjectiveCounter>().getObjectiveCount () < 3)
 			TargetShots++;
 	}
 

@@ -1,4 +1,6 @@
-﻿using System.Collections;
+﻿// Spawn The Zombies
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -6,7 +8,7 @@ public class L3ZombieSpawner : MonoBehaviour {
 
 	public GameObject zombieGuard;				// Zombie guard character
 	public GameObject zombieGirl;				// Zombie girl character
-	//public float gapBetweenSpawns = 5f;			// Every 5 seconds spawn a zombie guard
+	//public float gapBetweenSpawns = 5f;		// Every 5 seconds spawn a zombie guard
 	public Transform[] spawnPoints;				// List of spawn point coords
 
 	public GameObject SpawnPoint1;
@@ -24,7 +26,7 @@ public class L3ZombieSpawner : MonoBehaviour {
 		if ((spawnPointIndex == 0 && SpawnPoint1.activeInHierarchy) || (spawnPointIndex == 1 && SpawnPoint2.activeInHierarchy)) {
 			Debug.Log ("Zombie Spawned at spawnpoint: " + spawnPointIndex);
 
-			if (Random.Range (1, 3) == 1)
+			if (Random.Range (0, spawnPoints.Length) == 0)
 				Instantiate (zombieGuard, spawnPoints [spawnPointIndex].position, spawnPoints [spawnPointIndex].rotation);
 			else
 				Instantiate (zombieGirl, spawnPoints [spawnPointIndex].position, spawnPoints [spawnPointIndex].rotation);

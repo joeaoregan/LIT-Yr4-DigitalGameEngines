@@ -1,4 +1,8 @@
-﻿using System.Collections;
+﻿// Joe O'Regan
+// All Levels (Attached to player, could move to game controller)
+// Manage the amount of ammo the player has to use
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -24,7 +28,7 @@ public class GlobalAmmo : MonoBehaviour {
 
 		level = SceneManager.GetActiveScene ().buildIndex;
 		if (level > 1)
-			CurrentAmmo = PlayerPrefs.GetInt("Ammo");		// Get the ammo from the previous level
+			CurrentAmmo = PlayerPrefs.GetInt("Ammo");			// Get the ammo from the previous level
     }
 
     // Update is called once per frame
@@ -33,11 +37,11 @@ public class GlobalAmmo : MonoBehaviour {
 		AmmoText.text = "Ammo: " + InternalAmmo;
 	}
 
-	public int getAmmo(){  return CurrentAmmo; }			// used to save the ammo between levels
+	public int getAmmo(){  return CurrentAmmo; }				// used to save the ammo between levels
 
 	public void AddAmmo(int amount){
 		CurrentAmmo += amount;
-		anim.Play("HUDCanvasPanelTargetsText");				// Animate the text
+		anim.Play("HUDCanvasPanelTargetsText");					// Animate the text
 		totalAmmo += amount;
 	}
 

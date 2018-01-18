@@ -1,4 +1,11 @@
-﻿using System.Collections;
+﻿// Joe O'Regan
+// Level 1
+// Objective 3: Kill Zombies
+
+// Stuff that happens after zombies are killed
+// Set up Objective 4
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -6,7 +13,7 @@ using UnityEngine.UI;
 public class ZombieObjective : MonoBehaviour {
 
 	//public Text actionText;															// Canvas action text
-	public ObjectiveCounter objectiveCounter;											// Number of objectives completed
+	//public ObjectiveCounter objectiveCounter;											// Number of objectives completed
 
 	public Camera doorCam;																// Camera positioned overlooking doorway to Underground lab (Level 2)
 	public Camera playerCam;															// FPS camera
@@ -18,12 +25,15 @@ public class ZombieObjective : MonoBehaviour {
 	public Text doorHintText;
 
 	private Text infoMsg;																// Replaces actionText
+	private GameObject gc;																// Game controller
 
 	// Use this for initialization
 	void Start () {
+		gc = GameObject.FindWithTag ("GameController");									// Locate the game controller
 		infoMsg = GameObject.FindWithTag ("InfoMessage").GetComponent<Text> ();			// Find the information message object
 		StartCoroutine ("ObjectiveComplete");
-		objectiveCounter.incrementObjectives ();										// Increment the number of complete objectives
+		//objectiveCounter.incrementObjectives ();										// Increment the number of complete objectives
+		gc.GetComponent<ObjectiveComplete>().SetObjective3 (true);						// Mark objective as complete, and Increment completed objectives
 		doorSwitch.SetActive(true);														// Activate door trigger
 		zombieHintText.enabled = false;
 		doorHintText.enabled = true;

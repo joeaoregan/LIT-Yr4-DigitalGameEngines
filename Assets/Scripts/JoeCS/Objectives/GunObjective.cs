@@ -1,4 +1,11 @@
-﻿using System.Collections;
+﻿// Joe O'Regan
+// Level 1
+// Objective 1: Find the gun
+// What to do after this has finished
+// Set up objective 2
+// Cutaway to show where the ammo is in the target room
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -6,7 +13,7 @@ using UnityEngine.UI;
 public class GunObjective : MonoBehaviour {
 
 	//public Text actionText;															// Canvas action text
-	public ObjectiveCounter objectiveCounter;											// Amount of completed objectives
+	//public ObjectiveCounter objectiveCounter;											// Amount of completed objectives
 
 	// Camera view for objectives
 	public Camera shootingRangeCam;														// Shooting range camera
@@ -19,13 +26,16 @@ public class GunObjective : MonoBehaviour {
 
 	private Text infoMsg;																// Replaces actionText
 
+	//private GameObject gc;																// Game controller
+
 	// Use this for initialization
 	void Start () {
+		//gc = GameObject.FindWithTag ("GameController");									// Locate the game controller
 		infoMsg = GameObject.FindWithTag ("InfoMessage").GetComponent<Text> ();			// Find the information message object
 
 		Debug.Log ("Objective 1 Complete");
 		StartCoroutine ("ObjectiveComplete");
-		objectiveCounter.incrementObjectives ();										// Increment the number of complete objectives
+		//objectiveCounter.incrementObjectives ();										// Increment the number of complete objectives // Moved to ObjectiveComplete
 		gunIsHereText.enabled = false;													// Turn off CCTV hint for gun location
 		ammoIsHereText.enabled = true;													// Turn on CCTV hint for ammo location
 	}

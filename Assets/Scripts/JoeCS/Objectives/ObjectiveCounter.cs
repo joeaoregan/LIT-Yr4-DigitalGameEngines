@@ -1,4 +1,9 @@
-﻿using System.Collections;
+﻿// Joe O'Regan
+// All Levels
+
+// Count the number of objectives completed
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -37,6 +42,7 @@ public class ObjectiveCounter : MonoBehaviour {
 	}
 
 	public void incrementObjectives(){
+		Debug.Log ("IncrementObjectives: Increment Objectives");
 		completedObjectives++;
 		anim.Play("HUDCanvasPanelTargetsText");														// Animate the text
 	}

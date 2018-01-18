@@ -1,4 +1,8 @@
-﻿using System.Collections;
+﻿// Joe O'Regan
+// Level 3
+// If the zombie objective is complete, turn door switch on (green)
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 

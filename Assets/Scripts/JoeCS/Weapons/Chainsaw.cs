@@ -27,7 +27,7 @@ public class Chainsaw : MonoBehaviour {
 	private bool sawUp;										// Saw is in use
 	private bool triggerPressed;							// Need to indicate the trigger is pressed, or sawUp is reset by the other buttons not being pressed
 	private bool cutting;									// Attacking a zombie with the chainsaw (play different sound)
-	private Collider zombieToCut;							// Use update to kill the zombie over a period of time while being cut by the chainsaw
+	private Collider zombieToAttack;							// Use update to kill the zombie over a period of time while being cut by the chainsaw
 
     private void Start()
     {
@@ -35,13 +35,13 @@ public class Chainsaw : MonoBehaviour {
         anim = GetComponent<Animation>();					// Initialise the animation
 		triggerPressed = false;
 		sawUp = false;
-		zombieToCut = null;
+		zombieToAttack = null;
 		cutting = false;									// Chainsaw has not been triggered by a zombie yet
     }
         
     private void Update()
 	{
-		if(cutting) DamageZombie(zombieToCut);
+		if(cutting) DamageZombie(zombieToAttack);
 
 		//if ((Input.GetButton("Fire1") || Input.GetButtonDown("Fire1") || Input.GetAxisRaw("Fire1") > 0) && !sawUp)	// left mouse, button 1 gamepad, or gamepad right trigger
 		if (Input.GetAxisRaw ("Fire1") > 0)
@@ -101,7 +101,7 @@ public class Chainsaw : MonoBehaviour {
 				//if (other.GetComponent<ZombieHealth> ().currentHealth > 0) {
 				// Do Damage
 				cutting = true;						// Cutting the zombie
-				zombieToCut = other;				// Set collider
+				zombieToAttack = other;				// Set collider
 
 				//DamageZombie(other);
 

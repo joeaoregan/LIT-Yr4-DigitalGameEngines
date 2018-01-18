@@ -1,4 +1,7 @@
-﻿using System.Collections;
+﻿// Joe O'Regan
+// Manage zombie kills and headshots
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -12,7 +15,7 @@ public class ManageZombies : MonoBehaviour {
 	public Text targetsText;	
 	//public Text actionText;
 	public GameObject zombiesKilled;																		// The game objective
-	public ObjectiveCounter objectiveCounter;																// Number of completed objectives
+	//public ObjectiveCounter objectiveCounter;																// Number of completed objectives
 
 	private int OBJECTIVE_TARGET;
 	private int zombieCount;
@@ -20,9 +23,20 @@ public class ManageZombies : MonoBehaviour {
 	private Animation anim;
 	private int headshotCount;
 
+	private bool pauseZombies;																				// Stop zombie movement for cutaways/end of level animations etc
+
+	public bool ZombiesPaused() {																			// Are The zombies paused or not
+		return pauseZombies;
+	}
+
+	public void PauseZombies(bool set){																		// Set the zombies paused/unpaused
+		pauseZombies = set;
+	}
+
 	void Start(){
+		pauseZombies = false;																				// Zombies initialised to move
 		anim = targetsText.gameObject.GetComponent<Animation>();											// Initialise the animation
-		//infoMsg = GameObject.FindWithTag ("InfoMessage").GetComponent<Text> ();								// Find the information/action text object
+		//infoMsg = GameObject.FindWithTag ("InfoMessage").GetComponent<Text> ();							// Find the information/action text object
 
 		if (SceneManager.GetActiveScene ().buildIndex == 3) {
 			OBJECTIVE_TARGET = 3;																			// Level 1
@@ -47,7 +61,7 @@ public class ManageZombies : MonoBehaviour {
 		InternalTargets = currentTargets;
 
 		//if (currentTargets < OBJECTIVE_TARGET)
-		if((objectiveCounter.getObjectiveCount() == 3 && SceneManager.GetActiveScene().buildIndex == 3) || SceneManager.GetActiveScene().buildIndex >= 4) {	// If L1 objective met, or the level is level 2 or higher
+		if((GetComponent<ObjectiveCounter>().getObjectiveCount() == 3 && SceneManager.GetActiveScene().buildIndex == 3) || SceneManager.GetActiveScene().buildIndex >= 4) {	// If L1 objective met, or the level is level 2 or higher
 			targetsText.GetComponent<Text> ().text = "Zombies Killed: " + InternalTargets + "/" + OBJECTIVE_TARGET;
 
 			if (currentTargets >= OBJECTIVE_TARGET) {
@@ -80,7 +94,7 @@ public class ManageZombies : MonoBehaviour {
 	// Replaced with animated headshot text
 	IEnumerator HeadShotMsg() {
 		//actionText.GetComponent<Text> ().text = "Headshot 50";			// Display headshot message
-		//infoMsg.GetComponent<Text> ().text = "Headshot 50";					// Display headshot message
+		//infoMsg.GetComponent<Text> ().text = "Headshot 50";				// Display headshot message
 		//headshotText.text = "Headshot " + headshotCount;
 		yield return new WaitForSeconds (2);								// Show on screen for specified time
 		//actionText.GetComponent<Text> ().text = "";						// Then clear the message

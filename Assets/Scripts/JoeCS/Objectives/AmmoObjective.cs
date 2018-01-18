@@ -1,4 +1,11 @@
-﻿using System.Collections;
+﻿// Joe O'Regan
+// Level 1
+// Objective 2: Get ammo for gun
+// What to do when the objective is complete
+// Set up Objective 3, destroy the targets
+// With camera cutaways
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -10,7 +17,7 @@ public class AmmoObjective : MonoBehaviour {
 	public Text ammoHintText;																	// TV: Change the displayed hint on CCTV screen in shooting range from Ammo to Target
 	public Text targetHintText;																	// CAM: Change the displayed hint on camera shooting range from Ammo to Target
 
-	public ObjectiveCounter objectiveCounter;													// Number of objectives completed
+	//public ObjectiveCounter objectiveCounter;													// Number of objectives completed
 
 	public Camera rangeCam;																		// Camera positioned in Shooting Range
 	public Camera playerCam;																	// FPS camera
@@ -18,12 +25,15 @@ public class AmmoObjective : MonoBehaviour {
 	public Canvas playerHUD;																	// Turn on/off player HUD when switching camera views
 
 	private Text infoMsg;																		// Replaces actionText
+	private GameObject gc;																		// Game controller
 
 	// Use this for initialization
 	void Start () {
+		gc = GameObject.FindWithTag ("GameController");											// Locate the game controller
 		infoMsg = GameObject.FindWithTag ("InfoMessage").GetComponent<Text> ();					// Find the information message object
 		StartCoroutine ("ObjectiveComplete");
-		objectiveCounter.incrementObjectives ();												// Increment the number of complete objectives
+		//objectiveCounter.incrementObjectives ();												// Increment the number of complete objectives
+		gc.GetComponent<ObjectiveCounter>().incrementObjectives ();												// Increment the number of complete objectives
 		//rangeActionText.GetComponent<Text> ().text = "Objective 3:\nDestroy 4 Shooting Range Targets";// Then display the next objective
 		ammoHintText.text = "Destroy The Targets";
 		targetHintText.text = "Destroy The Targets";

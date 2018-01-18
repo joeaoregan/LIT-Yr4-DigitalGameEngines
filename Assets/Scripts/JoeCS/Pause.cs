@@ -1,4 +1,8 @@
-﻿using System.Collections;
+﻿// Joe O'Regan
+// All levels (Game controller component)
+// Pause the game
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;

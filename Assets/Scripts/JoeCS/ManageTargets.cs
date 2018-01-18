@@ -4,6 +4,11 @@
  * Joe O'Regan
  * 03/12/2017
  * 
+ * Manage the targets and play animation when the targets increment
+ * animating the text that displays the number of targets/zombies shot
+ * 
+ * The increment targets function is called when the player shoots a target
+ * or a zombie, and helps keep track of the number required for objectives
  */ 
 
 using System.Collections;
@@ -19,17 +24,20 @@ public class ManageTargets : MonoBehaviour {
 
 	public GameObject targetsDestroyed;													// Number of targets shot
 
-	public ObjectiveCounter objectiveCounter;											// Amount of completed objectives 
+	//public ObjectiveCounter objectiveCounter;											// Amount of completed objectives 
 
 	private int MAX_TARGETS = 4;
 
-	private Text infoMsg;
+	//private Text infoMsg;
 
 	private Animation anim;
 
+	private GameObject gc;																// Game controller
+
 	void Start () {
+		gc = GameObject.FindWithTag ("GameController");									// Locate the game controller
 		anim = targetsText.gameObject.GetComponent<Animation>();						// Initialise the animation
-		infoMsg = GameObject.FindWithTag ("InfoMessage").GetComponent<Text> ();
+		//infoMsg = GameObject.FindWithTag ("InfoMessage").GetComponent<Text> ();
 	}
 
 	// Update is called once per frame
@@ -39,7 +47,9 @@ public class ManageTargets : MonoBehaviour {
 		if (currentTargets < MAX_TARGETS)
 			targetsText.GetComponent<Text> ().text = "Targets: " + InternalTargets + "/4";
 
-		if (currentTargets == MAX_TARGETS && objectiveCounter.getObjectiveCount() == 2) {
+		//if (currentTargets == MAX_TARGETS && objectiveCounter.getObjectiveCount() == 2) {
+		if (currentTargets == MAX_TARGETS && gc.GetComponent<ObjectiveCounter>().getObjectiveCount() == 2) {
+			
 			targetsDestroyed.SetActive (true);
 			//StartCoroutine ("UpdateObjective");
 			//if (objectiveCounter.getObjectiveCount() == 2)							// If 2 objectives have been complete
@@ -56,7 +66,7 @@ public class ManageTargets : MonoBehaviour {
 			currentTargets += 1;														// Add 1 to the number of destroyed targets
 		anim.Play("HUDCanvasPanelTargetsText");											// Animate the text
 	}
-
+	/*
 	IEnumerator UpdateObjective(){
 		//yield return new WaitForSeconds (1);											// Wait 1 second
 		targetsText.GetComponent<Text> ().text = "";									// Reset the targets text message
@@ -67,4 +77,5 @@ public class ManageTargets : MonoBehaviour {
 		infoMsg.GetComponent<Text> ().text = "";										// Reset the action text
 		//targetsText.GetComponent<Text> ().text = "Zombies Killed: 0/3";				// Change the targets text to the Zombie Kill count
 	}
+	*/
 }
