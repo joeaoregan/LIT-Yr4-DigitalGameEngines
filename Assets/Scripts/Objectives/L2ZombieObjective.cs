@@ -15,7 +15,7 @@ public class L2ZombieObjective : MonoBehaviour {
 
 	//public Camera doorCam;																// Camera positioned overlooking doorway to Underground lab (Level 2)
 	//public Camera playerCam;																// FPS camera
-	//public GameObject doorSwitch;															// Activate the door trigger
+	public GameObject doorTrigger;															// Activate the door trigger
 
 	private Text infoMsg;																	// Replaces actionText, for displaying information messages
 	private GameObject gc;
@@ -23,12 +23,18 @@ public class L2ZombieObjective : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		gc = GameObject.FindWithTag ("GameController");										// Locate game controller
-		gc.GetComponent<ManageObjectives>().incrementObjectives ();							// Increment the number of complete objectives
+		//gc.GetComponent<ManageObjectives>().incrementObjectives ();							// Increment the number of complete objectives
 		infoMsg = GameObject.FindWithTag ("InfoMessage").GetComponent<Text> ();				// Locate the information text object
 		StartCoroutine ("ObjectiveComplete");
 
 		//objectiveCounter.incrementObjectives ();											// Increment the number of complete objectives
-		//doorSwitch.SetActive(true);														// Activate door trigger
+		doorTrigger.SetActive(false);														// Deactivate door trigger
+	}
+
+	void Update(){
+		if (gc.GetComponent<ManageObjectives> ().GetObjective1Complete ()) {
+			doorTrigger.SetActive(true);														// Activate door trigger
+		}
 	}
 	
 	// Update is called once per frame

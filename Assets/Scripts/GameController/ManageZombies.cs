@@ -61,11 +61,18 @@ public class ManageZombies : MonoBehaviour {
 		InternalTargets = currentTargets;
 
 		//if (currentTargets < OBJECTIVE_TARGET)
-		if((GetComponent<ManageObjectives>().getObjectiveCount() == 3 && SceneManager.GetActiveScene().buildIndex == 3) || SceneManager.GetActiveScene().buildIndex >= 4) {	// If L1 objective met, or the level is level 2 or higher
+		if((GetComponent<ManageObjectives>().getObjectiveCount() == 3 && SceneManager.GetActiveScene().buildIndex == 3) || SceneManager.GetActiveScene().buildIndex >= 4) {	// If L1 objective met, or the level is level 2 or higher			
 			targetsText.GetComponent<Text> ().text = "Zombies Killed: " + InternalTargets + "/" + OBJECTIVE_TARGET;
 
 			if (currentTargets >= OBJECTIVE_TARGET) {
-				zombiesKilled.SetActive (true);																// Mark the kill zombies objective as completed
+				zombiesKilled.SetActive (true);																// Mark the kill zombies objective as completed (Left over from javascript/C# combo)
+
+				if (SceneManager.GetActiveScene().buildIndex == 4) {										// If it is level 2
+					targetsText.text = "Find The Lab Door";
+					if (!GetComponent<ManageObjectives>().GetObjective1Complete())							// If the objective isn't already complete
+						GetComponent<ManageObjectives>().SetObjective1Complete (true);						// Mark objective1 (Kill Zombies) as complete, and Increment the number of complete objectives
+				}
+				
 				Debug.Log("<color=red>Manage Zombies:</color> Zombie Objective Complete");
 			}
 		}

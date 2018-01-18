@@ -1,11 +1,16 @@
-﻿using System.Collections;
+﻿// Joe O'Regan
+// Menu Scenes
+// Show or hide the cursor
+// When the game loops back around after finishing, the cursor disappears in the score scene
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class CursorShowHide : MonoBehaviour {
 
-	bool hideCursor;
+	//bool hideCursor;
 
 	// Use this for initialization
 	void Start () {
@@ -22,7 +27,7 @@ public class CursorShowHide : MonoBehaviour {
 		Cursor.lockState = CursorLockMode.None;
 		Cursor.visible = true;
 
-		hideCursor = false;
+		//hideCursor = false;
 	}
 	/*
 	void Update() {
@@ -35,7 +40,7 @@ public class CursorShowHide : MonoBehaviour {
 	*/
 
 	public void HideCursor(){
-		hideCursor = true;
+		//hideCursor = true;
 		Cursor.visible = false;	
 		Cursor.lockState = CursorLockMode.Locked;
 	}

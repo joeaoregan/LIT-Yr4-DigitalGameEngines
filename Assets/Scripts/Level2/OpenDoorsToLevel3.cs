@@ -1,15 +1,15 @@
 ﻿// Joe O'Regan
-// Level 1
+// Level 3
 
-// Script to open doors, replaces javascript version
-// Opens the double doors in the target range
+// Open the double doors at the end of level 2
+// Door switch is activated when level objective is completed
 
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class OpenDoors : MonoBehaviour {
+public class OpenDoorsToLevel3 : MonoBehaviour {
 	
     //public float TheDistance;
     //public GameObject Door1;

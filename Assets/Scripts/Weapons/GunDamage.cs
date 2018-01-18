@@ -24,10 +24,7 @@ public class GunDamage : MonoBehaviour {
 		player = GameObject.FindWithTag ("Player");
 	}
 
-	// When the fire button is pressed
-	// If the gun is active
-	// Use raycasting to select the target
-	// And use messages to call Deduct Points function
+	// When the fire button is pressed, If the gun is active, Use raycasting to select the target, And use messages to call Deduct Points function
     void Update ()
 	{
 		//if ((Input.GetButton("Fire1") || Input.GetAxisRaw("FireRT") > 0) && Time.time > nextFire && ammo.CurrentAmmo > 0)		// If the fire button or right trigger is pressed
