@@ -26,9 +26,12 @@ public class ManageAmmo : MonoBehaviour {
 		anim = AmmoText.gameObject.GetComponent<Animation>();
         InternalAmmo = LoadedAmmo;
 
-		level = SceneManager.GetActiveScene ().buildIndex - 2;	// Current level ...allowing for intro and menu scenes
-		if (level > 2)
-			CurrentAmmo = PlayerPrefs.GetInt("Ammo");			// Get the ammo from the previous level
+		//level = SceneManager.GetActiveScene ().buildIndex - 2;	// Current level ...allowing for intro and menu scenes
+		//if (level > 2)
+		if (SceneManager.GetActiveScene ().buildIndex > 3) {
+			CurrentAmmo = PlayerPrefs.GetInt ("Ammo");			// Get the ammo from the previous level
+			Debug.Log ("Loaded Ammo: " + CurrentAmmo);
+		}
     }
 
     // Update is called once per frame
