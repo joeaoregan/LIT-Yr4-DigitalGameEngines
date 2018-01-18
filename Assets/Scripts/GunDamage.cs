@@ -12,23 +12,30 @@ public class GunDamage : MonoBehaviour {
     private float nextFire;
     public GlobalAmmo ammo;
 
+	GameObject player;
+
+	void Start(){
+		player = GameObject.FindWithTag ("Player");
+	}
+
     // Update is called once per frame
     void Update ()
     {
         if ((Input.GetButton("Fire1") || Input.GetAxisRaw("FireRT") > 0) && Time.time > nextFire && ammo.CurrentAmmo > 0)// If the fire button or right trigger is pressed
         {
-            nextFire = Time.time + fireRate;
-            RaycastHit shot;
+			// Stop the zombies being shot when the player is using crowbar/chainsaw, by checking is the gun active in the scene first
+			if (player.GetComponent<WeaponSelect> ().GunActive ()) {
+				nextFire = Time.time + fireRate;
+				RaycastHit shot;
 
-            if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out shot))
-            {
-                targetDistance = shot.distance;                                                                         // Set the target distance
+				if (Physics.Raycast (transform.position, transform.TransformDirection (Vector3.forward), out shot)) {
+					targetDistance = shot.distance;                                                                         // Set the target distance
 
-                if (targetDistance < allowedRange)                                                                      // If the target distance is within range
-				{
-					shot.transform.SendMessage("DeductPoints", damageAmount, SendMessageOptions.DontRequireReceiver);   // Can be called later on, with damage amount
-                }
-            }
+					if (targetDistance < allowedRange) {                                                                      // If the target distance is within range
+						shot.transform.SendMessage ("DeductPoints", damageAmount, SendMessageOptions.DontRequireReceiver);   // Can be called later on, with damage amount
+					}
+				}
+			}
         }
     }
 }

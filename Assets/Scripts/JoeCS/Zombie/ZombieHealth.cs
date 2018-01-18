@@ -49,6 +49,10 @@ public class ZombieHealth : MonoBehaviour {
 		//healthBar.gameObject.SetActive (false);
 	}
 
+	public void InjureZombie (int amount){
+		DeductPoints (amount);
+	}
+
     void DeductPoints(int DamageAmount)
     {
 		if (alive) {
@@ -67,6 +71,7 @@ public class ZombieHealth : MonoBehaviour {
 			GetComponent<Animator> ().SetTrigger ("Hit1");
 		else 
 			GetComponent<Animator> ().SetTrigger ("Hit2");
+		if (currentHealth > 0) GetComponent<Animator> ().SetTrigger ("Alive");
 
 		wounded = true;										// Don't move the zombie if hit animation playing
 		
@@ -109,7 +114,9 @@ public class ZombieHealth : MonoBehaviour {
 
 		//Destroy(gameObject);              				// Destroy the game object the script is attached to
 		//healthBar.enabled = false;						// Disable the health bar slider when zombie is killed
+		GetComponent<CapsuleCollider> ().enabled = false;
 		this.enabled = false;
+
 		//Debug.Log("Zombie Killed");
 
 		//healthBar.enabled = false;						// Disable the health bar slider when zombie is killed

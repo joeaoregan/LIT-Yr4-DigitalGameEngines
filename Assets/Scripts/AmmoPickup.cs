@@ -21,10 +21,13 @@ public class AmmoPickup : MonoBehaviour {
     }
 
     IEnumerator OnTriggerEnter (Collider Player) {
-        if (Player.gameObject.tag == "Player" && hasGun.activeInHierarchy)
+		if (Player.gameObject.tag == "Player" && hasGun.activeInHierarchy)
         {
             Debug.Log("Player picked up Ammo");
-            gun.Reload();
+
+			// Check the gun is active in the scene before calling the Reload() function
+			if (Player.GetComponent<WeaponSelect>().GunActive()) 
+				gun.Reload();
 
             ammo.CurrentAmmo += 10;                                     // Increase the ammo
             pickupAudio.Play();                                         // Play pickup sound

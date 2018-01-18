@@ -13,9 +13,18 @@ README.md
 !/Assets/Scripts/JavaScript/					# Javascripts Scripts folder
 !/Assets/Scripts/JavaScript/InteractablesJoe/
 !/Assets/Scripts/JoeCS/							# Scripts created from scratch folder
+!/Assets/Scripts/JoeCS/Interactions/
+!/Assets/Scripts/JoeCS/Level1/
+!/Assets/Scripts/JoeCS/Level2/
+!/Assets/Scripts/JoeCS/Level3/
 !/Assets/Scripts/JoeCS/Menu/					# Menu Scripts folder
-!/Assets/Scripts/JoeCS/UI/
+!/Assets/Scripts/JoeCS/Music/
+!/Assets/Scripts/JoeCS/Objectives/
+!/Assets/Scripts/JoeCS/Player/
+!/Assets/Scripts/JoeCS/Scores/
 !/Assets/Scripts/JoeCS/SpawnObjects/
+!/Assets/Scripts/JoeCS/UI/
+!/Assets/Scripts/JoeCS/Weapons/
 !/Assets/Scripts/JoeCS/Zombie/
 !/Assets/Scripts/Menu/
 !/Assets/Scripts/Scripts/

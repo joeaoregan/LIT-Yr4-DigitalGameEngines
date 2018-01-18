@@ -19,6 +19,7 @@ public class GunObjective : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		Debug.Log ("Objective 1 Complete");
 		StartCoroutine ("ObjectiveComplete");
 		objectiveCounter.incrementObjectives ();										// Increment the number of complete objectives
 		gunIsHereText.enabled = false;													// Turn off CCTV hint for gun location

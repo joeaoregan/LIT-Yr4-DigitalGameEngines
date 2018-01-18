@@ -23,6 +23,8 @@ public class ObjectiveCounter : MonoBehaviour {
 	}
 
 	void UpdateObjectiveText() {
+		if (SceneManager.GetActiveScene().buildIndex == 3)
+			objectiveText.GetComponent<Text> ().text = "Objectives: " + completedObjectives + "/5";
 		if (SceneManager.GetActiveScene().buildIndex == 4)
 			objectiveText.GetComponent<Text> ().text = "Objectives: " + completedObjectives + "/2";
 		if (SceneManager.GetActiveScene().buildIndex == 5)
