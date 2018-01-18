@@ -30,7 +30,8 @@ public class AmmoPickup : MonoBehaviour {
             pickupAudio.Play();                                         // Play pickup sound
 
             yield return new WaitForSeconds(pickupAudio.clip.length);   // Wait for the sound to play then
-            Destroy(this.gameObject);                                   // Destory the collectable object
+            //Destroy(this.gameObject);                                 // Destory the collectable object
+			gameObject.SetActive(false);
         }
         else
             Debug.Log("Player can pick up ammo after collecting gun");

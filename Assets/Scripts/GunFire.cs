@@ -8,7 +8,7 @@ public class GunFire : MonoBehaviour {
     public ParticleSystem flashPart;					// Particles after firing gun
     public Light flashLight;							// Light after firing gun, this can be seen reflecting off other game objects
 
-    public float fireRate = 0.25f;								// How often a Player can fire
+    public float fireRate = 0.25f;						// How often a Player can fire
     public GlobalAmmo ammo;								// The amount of ammo the Player has
     public AudioClip gunAudio;							// Sound effect for firing the gun
     public AudioClip gunEmptyAudio;						// Sound effect when the Player fires but is out of ammo
@@ -20,7 +20,7 @@ public class GunFire : MonoBehaviour {
     
     public int damagePerShot = 20;						// The damage inflicted by the gun
 
-    //int shootableMask;									// Filter the layer the object is on, only selecting those on the shootable layer
+    //int shootableMask;								// Filter the layer the object is on, only selecting those on the shootable layer
 
     private void Start()
     {
@@ -37,7 +37,7 @@ public class GunFire : MonoBehaviour {
     
     private void Update()
     {
-        if ((Input.GetButton("Fire1") || Input.GetAxisRaw("FireRT") > 0) && Time.time > nextFire)
+		if ((Input.GetButton("Fire1") || Input.GetButtonDown("Fire1") || Input.GetAxisRaw("FireRT") > 0) && Time.time > nextFire)	// left mouse, button 1 gamepad, or gamepad right trigger
         {
             nextFire = Time.time + fireRate;														// Set the time the next fire can occur to the current time + the fire rate
             
@@ -53,7 +53,7 @@ public class GunFire : MonoBehaviour {
         flashObj.SetActive(true);
         flashPart.Play();
         flashLight.enabled = true;
-        Debug.Log("Muzzle Off Function particle");
+        Debug.Log("Shot Fired: Muzzle Off Function particle");
         yield return new WaitForSeconds(0.1f);
         //Debug.Log("Muzzle Function 0.1f");
         flashLight.enabled = false;
@@ -70,7 +70,7 @@ public class GunFire : MonoBehaviour {
     private void OnCollisionEnter(Collision collision)
     {
         //if (collision.gameObject.tag == "Ammo") Debug.Log("Test 2");
-        if (collision.gameObject.tag == "Ammo") anim.Play("Reload");
+        if (collision.gameObject.tag == "Ammo") anim.Play("Reload");	// When the player walks over ammo, play animation
     }
     
     void Shoot()

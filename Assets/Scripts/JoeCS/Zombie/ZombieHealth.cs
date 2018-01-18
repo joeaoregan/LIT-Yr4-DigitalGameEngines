@@ -39,6 +39,7 @@ public class ZombieHealth : MonoBehaviour {
 		if (zombieHealth <= 0)                   		// If the enemies health has run out
 		{
 			Destroy(gameObject);              			// Destroy the game object the script is attached to
+			Debug.Log("Zombie Killed");
 			zombieCount.incrementZombies ();			// Increment the number of zombies killed
 		}
 	}
