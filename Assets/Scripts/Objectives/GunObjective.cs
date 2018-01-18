@@ -35,19 +35,22 @@ public class GunObjective : MonoBehaviour {
 		gc = GameObject.FindWithTag ("GameController");									// Locate the game controller
 		infoMsg = GameObject.FindWithTag ("InfoMessage").GetComponent<Text> ();			// Find the information message object
 
-		Debug.Log ("Objective 1 Complete");
-
+		done = false;
 		//StartCoroutine ("ObjectiveComplete");
 		//objectiveCounter.incrementObjectives ();										// Increment the number of complete objectives // Moved to ObjectiveComplete
 	}
 
 	void Update(){
 		if (gc.GetComponent<ManageObjectives>().GetObjective1Complete() && !done) {		// If the player has the gun
-			StartCoroutine ("ObjectiveComplete");			
+			//StartCoroutine ("ObjectiveComplete");	
+
+			StartCoroutine (Objective1Complete ());					
 		}
 	}
 
-	IEnumerator ObjectiveComplete () {
+	IEnumerator Objective1Complete () {
+		Debug.Log ("GunObjective.cs: Objective 1 Complete");	
+
 		done = true;																	// Stop looping through the same function over and over
 
 		gunIsHereText.enabled = false;													// Turn off CCTV hint for gun location

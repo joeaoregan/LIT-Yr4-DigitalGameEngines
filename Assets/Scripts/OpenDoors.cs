@@ -47,13 +47,13 @@ public class OpenDoors : MonoBehaviour {
     {
 		if (distanceTo <= 2.0f)
         {
-			infoMsg.text = "Press Action Button";
+			infoMsg.text = "Press Action Button To Open";
 			StartCoroutine ("ClearText");
 		}
 
 		if (Input.GetButtonDown("Action")) {
 			// Debug.Log("<color=red>Action Button Pressed</color>");
-			if (distanceTo <= 2) {                   	 	// If the distance to the object is less than 2
+			if (distanceTo <= 2) {                   	 						// If the distance to the object is less than 2
 				//StartCoroutine(OpenTheDoors());                              	// Call the open door function
 				StartCoroutine(OpenTheDoors2());                              	// Call the open door function
 			}

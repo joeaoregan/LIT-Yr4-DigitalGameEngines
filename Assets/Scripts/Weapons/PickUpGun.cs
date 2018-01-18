@@ -50,13 +50,15 @@ public class PickUpGun : MonoBehaviour {
 		//Debug.Log ("Mouse over Chainsaw");
 
 		if (distanceTo < 2.0f) {
-			infoMsg.text = "Take 9mm Pistol";
-			StartCoroutine ("ClearText");									// Clear text after 2 seconds
+			if (!gc.GetComponent<ManageObjectives> ().GetObjective1Complete ()) {
+				infoMsg.text = "Take 9mm Pistol";
+				StartCoroutine ("ClearText");									// Clear text after 2 seconds
 
-			//if (Input.GetButtonDown ("Action") && gc.GetComponent<ManageZombies> ().totalZombieKills () == 0) {  
-			//if (Input.GetButtonDown ("Action") && !gc.GetComponent<ObjectiveComplete> ().HasGun ()) {  
-			if (Input.GetButtonDown ("Action") && !gc.GetComponent<ManageObjectives> ().GetObjective1Complete ()) {  
-				StartCoroutine(PickupGun ());								// Get the gun
+				//if (Input.GetButtonDown ("Action") && gc.GetComponent<ManageZombies> ().totalZombieKills () == 0) {  
+				//if (Input.GetButtonDown ("Action") && !gc.GetComponent<ObjectiveComplete> ().HasGun ()) {  
+				if (Input.GetButtonDown ("Action")) {  
+					StartCoroutine (PickupGun ());								// Get the gun
+				}
 			}
 		}
 	}
@@ -77,7 +79,7 @@ public class PickUpGun : MonoBehaviour {
 //		gc.GetComponent<ObjectiveComplete>().SetHasGun(true);				// Mark the objective complete, and increment completed objectives
 		gc.GetComponent<ManageObjectives>().SetObjective1Complete(true);	// Mark the objective complete, and increment completed objectives
 
-		Debug.Log ("Objective 1 Complete");
+		Debug.Log ("PickupGun.cs: Objective 1 Complete");
 
 		pickupAudio.Play();                                        			// play the sound effect
 

@@ -44,7 +44,7 @@ public class ammoInteract : MonoBehaviour {
 			//StartCoroutine (ClearText ());									// Stops working right when not enabled		
 			*/
 
-			if (phraseSelect == 0)
+			if (phraseSelect == 0)												// If InfoMessage is not set or reset display an info message
 				StartCoroutine (InfoMessage());
 		}
 	}
@@ -69,9 +69,9 @@ public class ammoInteract : MonoBehaviour {
 		infoMsg.text = phrases[0];												// Reset the text (Leave Blank For This Reason)
 	}
 
-
-	void OnMouseExit(){
-		infoMsg.text = "";
-	}
 	*/
+	void OnMouseExit(){
+		//if (phraseSelect == 0)													// If InfoMessage is not set or reset display an info message
+			infoMsg.text = "";
+	}
 }

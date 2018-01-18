@@ -34,26 +34,27 @@ public class AmmoObjective : MonoBehaviour {
 		gc = GameObject.FindWithTag ("GameController");											// Locate the game controller
 		infoMsg = GameObject.FindWithTag ("InfoMessage").GetComponent<Text> ();					// Find the information message object
 
-		StartCoroutine ("ObjectiveComplete");
+		//StartCoroutine ("ObjectiveComplete");
 
 		//objectiveCounter.incrementObjectives ();												// Increment the number of complete objectives
 
-		//gc.GetComponent<ManageObjectives>().incrementObjectives ();								// Increment the number of complete objectives
+		//gc.GetComponent<ManageObjectives>().incrementObjectives ();							// Increment the number of complete objectives
 
 		//rangeActionText.GetComponent<Text> ().text = "Objective 3:\nDestroy 4 Shooting Range Targets";// Then display the next objective
-		ammoHintText.text = "Destroy The Targets";
-		targetHintText.text = "Destroy The Targets";
-		rangeActionText.text = "Objective 3:\nDestroy 4 Shooting Range Targets";				// Show objective on camera canvas
 	}
 
 	void Update(){
 		if (gc.GetComponent<ManageObjectives>().GetObjective2Complete() && !done) {				// If the player has ammo
-			StartCoroutine ("ObjectiveComplete");			
+			//StartCoroutine ("ObjectiveComplete");			
+			StartCoroutine (Objective2Complete ());			
 		}
 	}
 	// Update is called once per frame
-	IEnumerator ObjectiveComplete () {
+	IEnumerator Objective2Complete () {
 		done = true;
+		ammoHintText.text = "Destroy The Targets";
+		targetHintText.text = "Destroy The Targets";
+		rangeActionText.text = "Objective 3:\nDestroy 4 Shooting Range Targets";				// Show objective on camera canvas
 
 		infoMsg.GetComponent<Text> ().text = "Objective 2:\nFind Ammo For Gun Complete";		// Display objective complete message
 		yield return new WaitForSeconds (2);													// Wait for the amount of time

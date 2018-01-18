@@ -44,24 +44,28 @@ public class ManageObjectives : MonoBehaviour {
 	public void SetObjective1Complete(bool set){
 		objective1 = set;
 		incrementObjectives ();
+		Debug.Log("<color=blue>SetObjective1Complete</color>");
 	}
 
 	// Level 1: Pick up ammo - Level 3: Close hall doors
 	public void SetObjective2Complete(bool set){
 		objective2 = set;
 		incrementObjectives ();
+		Debug.Log("<color=blue>SetObjective2Complete</color>");
 	}
 
 	// Level 1: Targets Destroyed - Level 3: Get To The Lab 
 	public void SetObjective3Complete(bool set){
 		objective3 = set;
 		incrementObjectives ();
+		Debug.Log("<color=blue>SetObjective3Complete</color>");
 	}
 
 	// Level 3: Find girl
 	public void SetObjective4Complete(bool set){
 		objective4 = set;
 		incrementObjectives ();
+		Debug.Log("<color=blue>SetObjective4Complete</color>");
 	}
 
 	public void ResetObjectives(){
