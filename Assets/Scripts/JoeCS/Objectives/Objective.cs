@@ -1,23 +1,27 @@
-﻿using System.Collections;
+﻿// Display the first objecive message on separate camera view
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;		// Text object
+using UnityEngine.UI;															// Text object
 
 public class Objective : MonoBehaviour {
-	
-	public Text actionText;														// Displays action message
 
 	public Camera gunCam;														// Camera positioned by Gun
 	public Camera playerCam;													// FPS camera
 
 	public Canvas playerHUD;
 
+	//public Text actionText;													// Displays action message
 	// CCTV Screen hints
 	public Text ammoHintText;													// Hint at ammo location on CCTV screen
 	public Text zombieHintText;													// Hint at Zombie location on CCTV scren
 	public Text doorHintText;													// Hint at lab door location on CCTV screen
 
+	//private Text infoMsg;														// Find the information message object
+
 	void Start () {
+		//infoMsg = GameObject.FindWithTag ("InfoMessage").GetComponent<Text> ();	// Find the information message object
 		StartCoroutine ("FirstObjective");
 		//FirstObjective();
 		ammoHintText.enabled = false;											// Disable hint until preceeding objective complete

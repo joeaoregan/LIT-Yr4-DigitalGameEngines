@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class L1Objective3Targets : MonoBehaviour {
 
-	public Text actionText;																	// Canvas action text
+	//public Text actionText;																// Canvas action text
 	public ObjectiveCounter objectiveCounter;												// Number of objectives completed
 
 	public Camera zombieCam;																// Camera positioned overlooking zombies in sleeping quarters
@@ -16,10 +16,11 @@ public class L1Objective3Targets : MonoBehaviour {
 	public Text targetHintText;																// Display hint on CCTV screen in storage area (ammo and target use same camera)
 	public Text zombieHintText;																// Display hint on CCTV screen in storage area
 
-										
+	private Text infoMsg;																	// Replaces actionText			
 
 	// Use this for initialization
 	void Start () {
+		infoMsg = GameObject.FindWithTag ("InfoMessage").GetComponent<Text> ();				// Find the information message object
 		StartCoroutine ("ObjectiveComplete");
 		objectiveCounter.incrementObjectives ();											// Increment the number of complete objectives
 		targetHintText.enabled = false;														// Hide the ammo hint
@@ -28,14 +29,14 @@ public class L1Objective3Targets : MonoBehaviour {
 
 	// Update is called once per frame
 	IEnumerator ObjectiveComplete () {
-		actionText.GetComponent<Text> ().text = "Objective 3:\nDestroy Targets Complete";	// Display objective complete message
+		infoMsg.GetComponent<Text> ().text = "Objective 3:\nDestroy Targets Complete";		// Display objective complete message
 		yield return new WaitForSeconds (2);												// Wait for the amount of time
-		actionText.GetComponent<Text> ().text = "";											// Need to clear previous message or it writes over with camera change
+		infoMsg.GetComponent<Text> ().text = "";											// Need to clear previous message or it writes over with camera change
 		yield return new WaitForSeconds (0.5f);												// Wait for the amount of time to allow the text to be cleared
-		actionText.GetComponent<Text> ().text = "Objective 4:\nFind and kill zombies";		// Then display the next objective
+		infoMsg.GetComponent<Text> ().text = "Objective 4:\nFind and kill zombies";			// Then display the next objective
 		StartCoroutine ("CameraViewport");													// Switch cameras
 		yield return new WaitForSeconds (2);												// Wait for the amount of time
-		actionText.GetComponent<Text> ().text = "";											// Then clear the message
+		infoMsg.GetComponent<Text> ().text = "";											// Then clear the message
 	}
 
 	IEnumerator CameraViewport () {

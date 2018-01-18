@@ -17,13 +17,19 @@ public class L1InteractCCTV : MonoBehaviour {
 	GameObject mainCam;
 	public float distanceTo;
 
-	public Text actionText;
+	//public Text actionText;
+
+	Text infoMsg;
 
 	// Use this for initialization
 	void Start () {
 		mainCam = GameObject.FindGameObjectWithTag ("MainCamera");
+		//infoMsg = GameObject.FindWithTag ("InfoMessage");
+
+		infoMsg = GameObject.FindWithTag ("InfoMessage").GetComponent<Text> ();
 	}
 
+	// Raycast
 	void Update() {
 		distanceTo = mainCam.GetComponent<PlayerCasting2> ().getDistanceFromTarget ();
 
@@ -38,13 +44,15 @@ public class L1InteractCCTV : MonoBehaviour {
 		Debug.Log ("Mouse over CCTV");
 
 		if (distanceTo < 2.0f) {
-			actionText.text = "Looks like some of the outside cameras have been disabled";
+			//actionText.text = "Looks like some of the outside cameras have been disabled";
+			infoMsg.text = "Looks like some of the outside cameras have been disabled";
 			StartCoroutine ("ClearText");
 		}
 	}
 
 	IEnumerator ClearText(){
 		yield return new WaitForSeconds (2);
-		actionText.text = "";
+		//actionText.text = "";
+		infoMsg.text = "";
 	}
 }

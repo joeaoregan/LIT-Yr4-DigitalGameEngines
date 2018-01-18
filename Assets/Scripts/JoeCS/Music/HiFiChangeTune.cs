@@ -5,17 +5,19 @@ using UnityEngine.UI;
 
 public class HiFiChangeTune: MonoBehaviour {
 	
-	public Text actionText;						// Display track skipped message
+	//public Text actionText;										// Display track skipped message
 
-	public AudioSource[] Speakers;				// list of speakers
-	public AudioClip[] tracks;					// list of tracks
+	public AudioSource[] Speakers;									// list of speakers
+	public AudioClip[] tracks;										// list of tracks
 
    // public ManageScore score;
 
 	private int i = 0;												// The index used to select the track from tracks array
+	private Text infoMsg;											// Find the information message object
 
 	void Start(){
 		ChangeClip ();												// Start by playing track 0, the first track in the list
+		infoMsg = GameObject.FindWithTag ("InfoMessage").GetComponent<Text> ();
 	}
 
 	void Update() {
@@ -62,9 +64,11 @@ public class HiFiChangeTune: MonoBehaviour {
 	}
 
 	IEnumerator TrackSkippedMessage(){
-		actionText.GetComponent<Text> ().text = "Track Skipped";	// Display track skipped message
+		//actionText.GetComponent<Text> ().text = "Track Skipped";	// Display track skipped message
+		infoMsg.GetComponent<Text> ().text = "Track Skipped";		// Display track skipped message
 		yield return new WaitForSeconds(2);							// Show action text for 2 seconds
-		actionText.GetComponent<Text> ().text = "";					// clear action text
+		//actionText.GetComponent<Text> ().text = "";				// clear action text
+		infoMsg.GetComponent<Text> ().text = "";					// clear action text
 	}
 }
 	

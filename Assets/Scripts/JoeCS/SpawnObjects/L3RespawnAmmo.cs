@@ -12,10 +12,16 @@ public class L3RespawnAmmo : MonoBehaviour {
 	public GameObject ammo1;
 	public GameObject ammo2;
 
-	public Text actionText;
-
 	public GlobalAmmo globalAmmoCount;
-	
+
+//	public Text actionText;
+	private Text infoMsg;																	// Replaces actionText, for displaying information messages
+
+
+	void Start () {
+		infoMsg = GameObject.FindWithTag ("InfoMessage").GetComponent<Text> ();				// Locate the information text object
+	}
+
 	// Update is called once per frame
 	void Update () {
 		if (globalAmmoCount.getAmmo() == 0	// If the player has run out of ammo
@@ -27,8 +33,8 @@ public class L3RespawnAmmo : MonoBehaviour {
 	}
 
 	IEnumerator BeCondescending(){
-		actionText.text = "Good thing bullets are cheap";
+		infoMsg.text = "Good thing bullets are cheap";
 		yield return new WaitForSeconds (3);												// Longer message/longer time
-		actionText.text = "";
+		infoMsg.text = "";
 	}
 }

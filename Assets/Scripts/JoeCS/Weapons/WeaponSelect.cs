@@ -19,11 +19,19 @@ public class WeaponSelect : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		hasGun = false;
-		hasChainsaw = false;
-		hasCrowbar = false;
+		if (SceneManager.GetActiveScene ().buildIndex == 3) {
+			hasGun = false;
+			hasChainsaw = false;
+			hasCrowbar = false;
+		} else {
+			hasGun = true;
+			hasChainsaw = true;
+			hasCrowbar = true;
+		}
+
 
 		activeWeaponIndex = 0;
+		SelectWeapon ();
 		//Debug.Log ("Start - Weapon Index: " + activeWeaponIndex);
 		pressed = false;
 	}
@@ -71,6 +79,11 @@ public class WeaponSelect : MonoBehaviour {
 		//chainsaw.gameObject.SetActive (false);
 	}
 
+	public void SelectGun(){
+		activeWeaponIndex = 0;
+		SelectWeapon ();
+	}
+
 	void SelectWeapon() {
 		/*
 		for (int i = 0; i < weapons.Length; i++) {
@@ -106,6 +119,10 @@ public class WeaponSelect : MonoBehaviour {
 	public bool GunActive(){
 		if(weapons[0].gameObject.activeInHierarchy) return true;
 		return false;
+	}
+
+	public bool GetHasGun(){
+		return hasGun;
 	}
 
 	public void HasGun(bool set){

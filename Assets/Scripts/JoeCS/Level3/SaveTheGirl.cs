@@ -6,19 +6,18 @@ using UnityEngine.UI;
 public class SaveTheGirl : MonoBehaviour {
 
 	public Text yapyapyap;
-	public Text actionText;
-
+//	public Text actionText;
 	public GameObject gun;
+	public Canvas playerHUD;													// Disable when fade to dead animation enabled
+	public Animator fadeToBoom;													// Show message when game completed
 
-	public Canvas playerHUD;			// Disable when fade to dead animation enabled
-	public Animator fadeToBoom;			// Show message when game completed
-
-	string playerName;
-
-	GameObject gc;
+	private string playerName;													// Players name
+	private GameObject gc;														// Access game controller components
+	private Text infoMsg;														// Replaces actionText, for displaying information messages
 
 	// Use this for initialization
 	void Start () {
+		infoMsg = GameObject.FindWithTag ("InfoMessage").GetComponent<Text> ();	// Locate the information text object
 		playerName = PlayerPrefs.GetString ("PlayerName");
 		gc = GameObject.FindWithTag ("GameController");
 
@@ -29,6 +28,8 @@ public class SaveTheGirl : MonoBehaviour {
 		StartCoroutine (StartJibberJabbering ());
 	}
 
+
+	// End of game dialogue
 	IEnumerator StartJibberJabbering(){
 		yapyapyap.text = "Who is it?";
 		yield return new WaitForSeconds (2);
@@ -43,18 +44,18 @@ public class SaveTheGirl : MonoBehaviour {
 		yield return new WaitForSeconds (2);
 
 		yapyapyap.text = "";
-		actionText.text = "Your research?\nYou did all this?";
+		infoMsg.text = "Your research?\nYou did all this?";
 		yield return new WaitForSeconds (2);
 
-		actionText.text = "";
+		infoMsg.text = "";
 		yapyapyap.text = "Yes, it's my lifes work";
 		yield return new WaitForSeconds (2);
 
 		yapyapyap.text = "";
-		actionText.text = "I'm sorry but\nThere's only one thing I can do now";
+		infoMsg.text = "I'm sorry but\nThere's only one thing I can do now";
 		yield return new WaitForSeconds (2);
 
-		actionText.text = "You have to die!!!";
+		infoMsg.text = "You have to die!!!";
 		yield return new WaitForSeconds (1);
 
 		gun.GetComponent<GunFire> ().Reload ();

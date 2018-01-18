@@ -9,7 +9,7 @@ public class L3Objective2Doors : MonoBehaviour {
 	public GameObject door2;
 	public GameObject labDoor;
 
-	public Text actionText;
+//	public Text actionText;
 
 	public ObjectiveCounter objectiveCounter;
 
@@ -17,10 +17,13 @@ public class L3Objective2Doors : MonoBehaviour {
 	public Camera doorCam;
 	public Canvas playerHUD;
 
+	private Text infoMsg;																	// Replaces actionText, for displaying information messages
+
 	GameObject gc;
 
 	// Use this for initialization
 	void Start () {
+		infoMsg = GameObject.FindWithTag ("InfoMessage").GetComponent<Text> ();				// Locate the information text object
 		gc = GameObject.FindWithTag ("GameController");
 	}
 	
@@ -38,9 +41,9 @@ public class L3Objective2Doors : MonoBehaviour {
 	IEnumerator ObjectiveComplete(){
 		gc.GetComponent<ObjectiveComplete> ().SetZombiesKilled (true);
 
-		actionText.text = "Objective 2:\nClose Doorways To Great Hall Complete";
+		infoMsg.text = "Objective 2:\nClose Doorways To Great Hall Complete";
 		yield return new WaitForSeconds(2);
-		actionText.text = "";																// Clear the message
+		infoMsg.text = "";																	// Clear the message
 		//yield return new WaitForSeconds (0.5f);											// Wait for the amount of time to allow the text to be cleared
 
 		// Switch camera view

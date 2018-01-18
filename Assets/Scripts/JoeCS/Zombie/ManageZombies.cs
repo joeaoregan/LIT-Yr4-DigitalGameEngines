@@ -9,16 +9,19 @@ public class ManageZombies : MonoBehaviour {
 	public int currentTargets;
 	public int InternalTargets;
 	public Text targetsText;	
-	public Text actionText;
+	//public Text actionText;
 
 	public GameObject zombiesKilled;																		// The game objective
 	public ObjectiveCounter objectiveCounter;																// Number of completed objectives
 
 	private int OBJECTIVE_TARGET;
+	private int zombieCount;
 
-	int zombieCount;
+	private Text infoMsg;
 
 	void Start(){
+		infoMsg = GameObject.FindWithTag ("InfoMessage").GetComponent<Text> ();
+
 		if (SceneManager.GetActiveScene ().buildIndex == 3) {
 			OBJECTIVE_TARGET = 3;																			// Level 1
 			Debug.Log("Level 1: Kill 3 Zombies");
@@ -41,11 +44,12 @@ public class ManageZombies : MonoBehaviour {
 		InternalTargets = currentTargets;
 
 		//if (currentTargets < OBJECTIVE_TARGET)
-		if(objectiveCounter.getObjectiveCount() == 3 || SceneManager.GetActiveScene().buildIndex >= 4) {	// If L1 objective met, or the level is level 2 or higher
+		if((objectiveCounter.getObjectiveCount() == 3 && SceneManager.GetActiveScene().buildIndex == 3) || SceneManager.GetActiveScene().buildIndex >= 4) {	// If L1 objective met, or the level is level 2 or higher
 			targetsText.GetComponent<Text> ().text = "Zombies Killed: " + InternalTargets + "/" + OBJECTIVE_TARGET;
 
-			if (currentTargets == OBJECTIVE_TARGET) {
+			if (currentTargets >= OBJECTIVE_TARGET) {
 				zombiesKilled.SetActive (true);																// Mark the kill zombies objective as completed
+				Debug.Log("<color=red>Manage Zombies:</color> Zombie Objective Complete");
 			}
 		}
 	}
@@ -67,9 +71,11 @@ public class ManageZombies : MonoBehaviour {
 	}
 
 	IEnumerator HeadShotMsg() {
-		actionText.GetComponent<Text> ().text = "Headshot 50";				// Display headshot message
+		//actionText.GetComponent<Text> ().text = "Headshot 50";			// Display headshot message
+		infoMsg.GetComponent<Text> ().text = "Headshot 50";					// Display headshot message
 		yield return new WaitForSeconds (2);								// Show on screen for specified time
-		actionText.GetComponent<Text> ().text = "";							// Then clear the message
+		//actionText.GetComponent<Text> ().text = "";						// Then clear the message
+		infoMsg.GetComponent<Text> ().text = "";							// Then clear the message
 	}
 
 	void ZombieCount(){		

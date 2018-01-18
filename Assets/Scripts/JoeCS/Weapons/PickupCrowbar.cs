@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class PickupCrowbar : MonoBehaviour {
 
 	public float distanceTo;
-	public Text actionText;
+	Text infoMsg;
 	//public GameObject playerCrowbar;								// Switch with + and - on keyboard keypad, or up/down on gamepad, no need to show straight away
 
 	private AudioSource pickupAudio;
@@ -20,6 +20,7 @@ public class PickupCrowbar : MonoBehaviour {
 	private bool readyToPickup;										// Cant get the crowbar until 2 zombies shot
 
 	void Start () {
+		infoMsg = GameObject.FindWithTag ("InfoMessage").GetComponent<Text> ();
 		mainCam = GameObject.FindGameObjectWithTag ("MainCamera");
 		gc = GameObject.FindGameObjectWithTag ("GameController");
 		player = GameObject.FindWithTag("Player");
@@ -38,7 +39,7 @@ public class PickupCrowbar : MonoBehaviour {
 		if (distanceTo < 2.0f) {
 			if (Time.time > nextMessage) {
 				nextMessage = Time.time + messageRate;
-				actionText.text = "Get The Crowbar";
+				infoMsg.text = "Get The Crowbar";
 				StartCoroutine ("ClearText");							// Clear text after 2 seconds
 			}
 
@@ -47,7 +48,7 @@ public class PickupCrowbar : MonoBehaviour {
 				if (readyToPickup) {
 					GetCrowbar ();										// Get the crowbar
 				} else {
-					actionText.text = "Try Gun And Chainsaw First";
+					infoMsg.text = "Try Gun And Chainsaw First";
 					nextMessage = Time.time + messageRate;
 
 					StartCoroutine ("ClearText");
@@ -58,16 +59,24 @@ public class PickupCrowbar : MonoBehaviour {
 
 	IEnumerator ClearText(){
 		yield return new WaitForSeconds (2);
-		actionText.text = "";
+		infoMsg.text = "";
 	}
 
 	void GetCrowbar(){
 		player.GetComponent<WeaponSelect> ().HasCrowbar(true);		// Enable the crowbar for the player
 
-		this.gameObject.SetActive (false);							// Hide the pickup crowbar object
 
 		//playerCrowbar.gameObject.SetActive (true);				// Show the Player crowbar
+		StartCoroutine(PickedUp());
 
-		pickupAudio.Play();                                        	// play the sound effect
 	}
+
+	IEnumerator PickedUp(){
+		pickupAudio.Play();                                        	// play the sound effect
+
+		yield return new WaitForSeconds (pickupAudio.clip.length);
+
+		this.gameObject.SetActive (false);							// Hide the pickup crowbar object
+	}
+
 }

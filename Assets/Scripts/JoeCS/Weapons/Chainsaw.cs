@@ -96,8 +96,9 @@ public class Chainsaw : MonoBehaviour {
     private void OnTriggerEnter(Collider other)
     {
 		// Do chainsaw Audio & Damage
-		if (other.gameObject.tag == "Zombie" && ((Input.GetButton("Fire1") || Input.GetButtonDown("Fire1") || Input.GetAxisRaw("FireRT") > 0))) {
-			if (other.GetComponent<ZombieHealth> ().currentHealth > 0) {
+		if (other != null) {
+			if (other.gameObject.tag == "Zombie" && other.GetComponent<ZombieHealth> ().currentHealth > 0 && ((Input.GetButton ("Fire1") || Input.GetButtonDown ("Fire1") || Input.GetAxisRaw ("FireRT") > 0))) {
+				//if (other.GetComponent<ZombieHealth> ().currentHealth > 0) {
 				// Do Damage
 				cutting = true;						// Cutting the zombie
 				zombieToCut = other;				// Set collider
@@ -110,6 +111,7 @@ public class Chainsaw : MonoBehaviour {
 				//audioSource.pitch = 2;
 				audioSource.clip = chainsawClip2;
 				audioSource.Play ();
+				//}
 			}
 		}
 	}

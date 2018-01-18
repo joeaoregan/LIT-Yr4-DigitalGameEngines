@@ -15,11 +15,12 @@ public class CloseZombieSpawnDoor : MonoBehaviour {
 	GameObject mainCam;
 	public float distanceTo;
 
-	public Text actionText;
+	Text infoMsg;
 
 	// Use this for initialization
 	void Start () {
 		mainCam = GameObject.FindGameObjectWithTag ("MainCamera");
+		infoMsg = GameObject.FindWithTag ("InfoMessage").GetComponent<Text> ();
 		doorAudio = GetComponent<AudioSource> ();
 	}
 
@@ -29,7 +30,7 @@ public class CloseZombieSpawnDoor : MonoBehaviour {
 
 	void OnMouseOver() {
 		if (distanceTo < 2.0f) {
-			actionText.text = "Press Action Button";
+			infoMsg.text = "Press Action Button";
 			StartCoroutine ("ClearText");
 
 			if(Input.GetButtonDown("Action") && doorSwitch.activeInHierarchy) {
@@ -40,7 +41,7 @@ public class CloseZombieSpawnDoor : MonoBehaviour {
 
 	IEnumerator ClearText(){
 		yield return new WaitForSeconds (2);
-		actionText.text = "";
+		infoMsg.text = "";
 	}
 
 	void CloseDoor(){

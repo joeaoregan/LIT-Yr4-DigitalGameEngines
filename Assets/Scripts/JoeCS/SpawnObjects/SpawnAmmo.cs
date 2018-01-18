@@ -15,11 +15,17 @@ public class SpawnAmmo : MonoBehaviour {
 	//public GameObject hasGun;
 	public GameObject targetsDestroyed;
 
-	public Text actionText;
+	//public Text actionText;
 
 	public ObjectiveCounter completeObjectives;
 	public GlobalAmmo globalAmmoCount;
-	
+
+	private Text infoMsg;
+
+	void Start () {
+		infoMsg = GameObject.FindWithTag ("InfoMessage").GetComponent<Text> ();				// Find the information message text object
+	}
+
 	// Update is called once per frame
 	void Update () {
 		//if (!targetsDestroyed.activeInHierarchy && hasGun.activeInHierarchy) {			// If the player hasn't finished shooting targets, and has the gun
@@ -36,8 +42,8 @@ public class SpawnAmmo : MonoBehaviour {
 	}
 
 	IEnumerator BeCondescending(){
-		actionText.text = "Get more ammo, and shoot target bullseye\nThe shiney red dot in target center";
+		infoMsg.text = "Get more ammo, and shoot target bullseye\nThe shiney red dot in target center";
 		yield return new WaitForSeconds (3);												// Longer message/longer time
-		actionText.text = "";
+		infoMsg.text = "";
 	}
 }

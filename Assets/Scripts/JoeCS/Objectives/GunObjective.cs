@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class GunObjective : MonoBehaviour {
 
-	public Text actionText;																// Canvas action text
+	//public Text actionText;															// Canvas action text
 	public ObjectiveCounter objectiveCounter;											// Amount of completed objectives
 
 	// Camera view for objectives
@@ -17,8 +17,12 @@ public class GunObjective : MonoBehaviour {
 	public Text gunIsHereText;
 	public Text ammoIsHereText;
 
+	private Text infoMsg;																// Replaces actionText
+
 	// Use this for initialization
 	void Start () {
+		infoMsg = GameObject.FindWithTag ("InfoMessage").GetComponent<Text> ();			// Find the information message object
+
 		Debug.Log ("Objective 1 Complete");
 		StartCoroutine ("ObjectiveComplete");
 		objectiveCounter.incrementObjectives ();										// Increment the number of complete objectives
@@ -28,14 +32,14 @@ public class GunObjective : MonoBehaviour {
 	
 	// Update is called once per frame
 	IEnumerator ObjectiveComplete () {
-		actionText.GetComponent<Text> ().text = "Objective 1:\nFind Gun Complete";		// Display message
+		infoMsg.GetComponent<Text> ().text = "Objective 1:\nFind Gun Complete";			// Display message
 		yield return new WaitForSeconds (2);											// Wait for the amount of time
-		actionText.GetComponent<Text> ().text = "";										// Need to clear previous message or it writes over with camera change
+		infoMsg.GetComponent<Text> ().text = "";										// Need to clear previous message or it writes over with camera change
 		yield return new WaitForSeconds (0.5f);											// Wait for the amount of time to allow the text to be cleared
-		actionText.GetComponent<Text> ().text = "Objective 2:\nFind Ammo";				// Then clear the message
+		infoMsg.GetComponent<Text> ().text = "Objective 2:\nFind Ammo";					// Then clear the message
 		StartCoroutine ("CameraViewport");												// Switch cameras
 		yield return new WaitForSeconds (2);											// Wait for the amount of time
-		actionText.GetComponent<Text> ().text = "";										// Then clear the message
+		infoMsg.GetComponent<Text> ().text = "";										// Then clear the message
 	}
 
 	IEnumerator CameraViewport () {

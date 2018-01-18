@@ -7,21 +7,25 @@ public class AmmoPickup : MonoBehaviour {
     public GlobalAmmo ammo;
     //public GameObject Player;
 
-    public GameObject hasGun;
+    //public GameObject hasGun;
 
-    private AudioSource pickupAudio;
     public GunFire gun;
 
-	public ObjectiveCounter numObjectives;								// Check the number of complete objective
-	public GameObject getAmmoObjective;									// Mark the get ammo objective as complete
-    
+	//public ObjectiveCounter numObjectives;								// Check the number of complete objective
+	//public GameObject getAmmoObjective;									// Mark the get ammo objective as complete
+
+	private AudioSource pickupAudio;
+	private GameObject player;
+
     private void Start()
     {
         pickupAudio = GetComponent<AudioSource>();
+		player = GameObject.FindWithTag ("Player");
     }
 
-    IEnumerator OnTriggerEnter (Collider Player) {
-		if (Player.gameObject.tag == "Player" && hasGun.activeInHierarchy)
+	IEnumerator OnTriggerEnter (Collider Player) {
+		//if (Player.gameObject.tag == "Player" && hasGun.activeInHierarchy)
+		if (Player.gameObject.tag == "Player" && player.GetComponent<WeaponSelect>().GetHasGun())
         {
             Debug.Log("Player picked up Ammo");
 
@@ -39,8 +43,8 @@ public class AmmoPickup : MonoBehaviour {
         else
             Debug.Log("Player can pick up ammo after collecting gun");
 
-		if (numObjectives.getObjectiveCount () == 1) {					// If we are looking to complete the 2nd objective (pick up ammo)
-			getAmmoObjective.SetActive (true);							// Mark the get ammo objective as complete
-		}
+		//if (numObjectives.getObjectiveCount () == 1) {					// If we are looking to complete the 2nd objective (pick up ammo)
+		//	getAmmoObjective.SetActive (true);							// Mark the get ammo objective as complete
+		//}
     }
 }

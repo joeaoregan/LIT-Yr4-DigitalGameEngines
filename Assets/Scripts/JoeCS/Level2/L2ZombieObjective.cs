@@ -5,32 +5,34 @@ using UnityEngine.UI;
 
 public class L2ZombieObjective : MonoBehaviour {
 
-	public Text actionText;																	// Canvas action text
+	//public Text actionText;																// Canvas action text
 	public ObjectiveCounter objectiveCounter;												// Number of objectives completed
 
 	//public Camera doorCam;																// Camera positioned overlooking doorway to Underground lab (Level 2)
 	//public Camera playerCam;																// FPS camera
 	//public GameObject doorSwitch;															// Activate the door trigger
 
+	private Text infoMsg;																	// Replaces actionText, for displaying information messages
+
 	// Use this for initialization
 	void Start () {
+		infoMsg = GameObject.FindWithTag ("InfoMessage").GetComponent<Text> ();				// Locate the information text object
 		StartCoroutine ("ObjectiveComplete");
 		objectiveCounter.incrementObjectives ();											// Increment the number of complete objectives
-		//doorSwitch.SetActive(true);															// Activate door trigger
+		//doorSwitch.SetActive(true);														// Activate door trigger
 	}
 	
 	// Update is called once per frame
 	IEnumerator ObjectiveComplete () {
 
-
-		actionText.GetComponent<Text> ().text = "Objective 1:\nKill 5 Zombies Complete";	// Display objective complete message
+		infoMsg.GetComponent<Text> ().text = "Objective 1:\nKill 5 Zombies Complete";		// Display objective complete message
 		yield return new WaitForSeconds (2);												// Wait for the amount of time
-		actionText.GetComponent<Text> ().text = "";											// Need to clear previous message or it writes over with camera change
+		infoMsg.GetComponent<Text> ().text = "";											// Need to clear previous message or it writes over with camera change
 		yield return new WaitForSeconds (0.5f);												// Wait for the amount of time to allow the text to be cleared
-		actionText.GetComponent<Text> ().text = "Objective 2:\nGet To The Lab";				// Then display the next objective
+		infoMsg.GetComponent<Text> ().text = "Objective 2:\nGet To The Lab";				// Then display the next objective
 		//StartCoroutine ("CameraViewport");												// Switch cameras
 		yield return new WaitForSeconds (2);												// Wait for the amount of time
-		actionText.GetComponent<Text> ().text = "";											// Then clear the message
+		infoMsg.GetComponent<Text> ().text = "";											// Then clear the message
 	}
 	/*
 	IEnumerator CameraViewport () {

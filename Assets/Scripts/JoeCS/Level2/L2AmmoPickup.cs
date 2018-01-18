@@ -9,17 +9,23 @@ public class L2AmmoPickup : MonoBehaviour {
 
     private AudioSource pickupAudio;
     public GunFire gun;
+
+	GameObject player;
 	    
     private void Start()
     {
         pickupAudio = GetComponent<AudioSource>();
+		player = GameObject.FindWithTag ("Player");
     }
 
     IEnumerator OnTriggerEnter (Collider Player) {
         if (Player.gameObject.tag == "Player")
         {
             Debug.Log("Player picked up Ammo");
-            gun.Reload();
+
+			// Check the gun is active in the scene
+			if(player.GetComponent<WeaponSelect>().GunActive())
+            	gun.Reload();
 
             ammo.CurrentAmmo += 10;                                     // Increase the ammo
             pickupAudio.Play();                                         // Play pickup sound

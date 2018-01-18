@@ -8,20 +8,21 @@ public class ManageScore : MonoBehaviour {
 
     public int currentScore;
     public int InternalScore;
-    public Text scoreText;
+    public Text scoreNumText;											// UI display the score
 	private int levelIndex;												// Current level of the game (build index)
 
 	void Start() {
 		levelIndex = SceneManager.GetActiveScene ().buildIndex;
 
 		if (levelIndex > 3)
-			currentScore = PlayerPrefs.GetInt("Score");				// Get the score from the previous level
+			currentScore = PlayerPrefs.GetInt("Score");					// Get the score from the previous level
 	}
     	
 	// Update is called once per frame
 	void Update () {
-        InternalScore = currentScore;
-        scoreText.GetComponent<Text> ().text = "" + InternalScore;
+		InternalScore = currentScore;
+		//scoreNumText.GetComponent<Text> ().text = "" + InternalScore;
+		scoreNumText.text = "" + InternalScore;
     }
 
 	public int getScore() {

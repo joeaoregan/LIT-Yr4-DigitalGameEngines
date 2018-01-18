@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class AmmoObjective : MonoBehaviour {
 
-	public Text actionText;																		// Player HUD Canvas action text
+	//public Text actionText;																	// Player HUD Canvas action text
 	public Text rangeActionText;																// Shooting Range camera canvas
 	public Text ammoHintText;																	// TV: Change the displayed hint on CCTV screen in shooting range from Ammo to Target
 	public Text targetHintText;																	// CAM: Change the displayed hint on camera shooting range from Ammo to Target
@@ -17,9 +17,11 @@ public class AmmoObjective : MonoBehaviour {
 
 	public Canvas playerHUD;																	// Turn on/off player HUD when switching camera views
 
+	private Text infoMsg;																		// Replaces actionText
 
 	// Use this for initialization
 	void Start () {
+		infoMsg = GameObject.FindWithTag ("InfoMessage").GetComponent<Text> ();					// Find the information message object
 		StartCoroutine ("ObjectiveComplete");
 		objectiveCounter.incrementObjectives ();												// Increment the number of complete objectives
 		//rangeActionText.GetComponent<Text> ().text = "Objective 3:\nDestroy 4 Shooting Range Targets";// Then display the next objective
@@ -30,14 +32,14 @@ public class AmmoObjective : MonoBehaviour {
 	
 	// Update is called once per frame
 	IEnumerator ObjectiveComplete () {
-		actionText.GetComponent<Text> ().text = "Objective 2:\nFind Ammo For Gun Complete";		// Display objective complete message
+		infoMsg.GetComponent<Text> ().text = "Objective 2:\nFind Ammo For Gun Complete";		// Display objective complete message
 		yield return new WaitForSeconds (2);													// Wait for the amount of time
-		actionText.GetComponent<Text> ().text = "";												// Need to clear previous message or it writes over with camera change
+		infoMsg.GetComponent<Text> ().text = "";												// Need to clear previous message or it writes over with camera change
 		yield return new WaitForSeconds (0.5f);													// Wait for the amount of time to allow the text to be cleared
-		actionText.GetComponent<Text> ().text = "Objective 3:\nDestroy 4 Shooting Range Targets";// Then display the next objective
+		infoMsg.GetComponent<Text> ().text = "Objective 3:\nDestroy 4 Shooting Range Targets";	// Then display the next objective
 		StartCoroutine ("CameraViewport");														// Switch cameras
 		yield return new WaitForSeconds (2);													// Wait for the amount of time
-		actionText.GetComponent<Text> ().text = "";												// Then clear the message
+		infoMsg.GetComponent<Text> ().text = "";												// Then clear the message
 	}
 
 	IEnumerator CameraViewport () {

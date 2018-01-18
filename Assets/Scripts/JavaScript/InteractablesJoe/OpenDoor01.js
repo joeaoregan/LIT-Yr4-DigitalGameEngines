@@ -1,6 +1,6 @@
 ﻿import UnityEngine.UI;
 
-var TextDisplay: GameObject;
+var ActionText: GameObject;
 var distanceToObject: float = PlayerCasting.DistanceFromTarget;
 
 var Door1: GameObject;                                  	// The double doors
@@ -22,7 +22,7 @@ function Update() {
 function OnMouseOver() {
 
     if (distanceToObject <= 2) {                        	// If the distance to the object is less than 2
-        TextDisplay.GetComponent.<Text>().text = "Press Action Button"; // Display action button message
+        ActionText.GetComponent.<Text>().text = "Press Action Button"; // Display action button message
     }
 
     if (Input.GetButtonDown("Action")) {
@@ -37,7 +37,7 @@ function OnMouseOver() {
 	Reset the text when the cursor moves from the object
 */
 function OnMouseExit() {
-    TextDisplay.GetComponent.<Text>().text = "";        	// Clear the action text
+    ActionText.GetComponent.<Text>().text = "";        	// Clear the action text
 }
 
 /*

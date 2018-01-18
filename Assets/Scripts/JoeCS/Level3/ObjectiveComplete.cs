@@ -18,6 +18,8 @@ public class ObjectiveComplete : MonoBehaviour {
 
 	// Objective 1: Kill zombies
 	public bool ZombiesKilled() {
+
+		Debug.Log("<color=blue>Objective Complete:</color> Zombie Objective Complete");
 		return zombieObjectiveComplete;
 	}
 

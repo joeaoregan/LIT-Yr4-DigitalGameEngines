@@ -3,7 +3,12 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Target
+  - Ammo
+  - Zombie
+  - M9
+  - InfoMessage
   layers:
   - Default
   - TransparentFX

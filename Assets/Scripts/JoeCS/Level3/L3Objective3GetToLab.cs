@@ -8,11 +8,14 @@ public class L3Objective3GetToLab : MonoBehaviour {
 	GameObject player;																// Get the player
 	GameObject gc;																	// Get the game controller
 
-	public Text actionText;															// Display a message for the player
+//	public Text actionText;															// Display a message for the player
 	public ObjectiveCounter objectiveCounter;
+
+	private Text infoMsg;															// Replaces actionText, for displaying information messages
 
 	void Awake ()
 	{
+		infoMsg = GameObject.FindWithTag ("InfoMessage").GetComponent<Text> ();		// Locate the information text object
 		player = GameObject.FindGameObjectWithTag ("Player");   					// Locate the Player
 		gc = GameObject.FindWithTag ("GameController");
 	}
@@ -30,14 +33,14 @@ public class L3Objective3GetToLab : MonoBehaviour {
 		if (!gc.GetComponent<ObjectiveComplete>().GetToLab()) {
 			gc.GetComponent<ObjectiveComplete> ().SetGetToLab (true);				// Mark objecive as completed (stops message showing repeatedly, and incrementing objectives)
 
-			actionText.text = "Objective 3:\nGet To The Lab Complete";
+			infoMsg.text = "Objective 3:\nGet To The Lab Complete";
 			yield return new WaitForSeconds(2);
-			actionText.text = "";													// Clear the message
+			infoMsg.text = "";														// Clear the message
 			yield return new WaitForSeconds (0.5f);									// Wait for the amount of time to allow the text to be cleared
 
-			actionText.GetComponent<Text> ().text = "Objective 4:\nFind The Girl";	// Then display the next objective
+			infoMsg.GetComponent<Text> ().text = "Objective 4:\nFind The Girl";		// Then display the next objective
 			yield return new WaitForSeconds (2.0f);									// Wait for the amount of time
-			actionText.GetComponent<Text> ().text = "";								// Then clear the message
+			infoMsg.GetComponent<Text> ().text = "";								// Then clear the message
 		}
 	}
 }

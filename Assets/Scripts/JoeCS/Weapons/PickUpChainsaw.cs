@@ -10,11 +10,13 @@ public class PickUpChainsaw : MonoBehaviour {
 
 	public float distanceTo;
 
-	public Text actionText;
+	Text infoMsg;
 
 	private GameObject mainCam;
 	private GameObject gc;
 	private GameObject player;
+
+	private AudioSource pickupAudio;
 
 	private float nextMessage;			// When can the next action message be shown
 	private float messageRate = 2.0f;	// Time between changing messages
@@ -25,6 +27,8 @@ public class PickUpChainsaw : MonoBehaviour {
 	void Start () {
 		mainCam = GameObject.FindGameObjectWithTag ("MainCamera");
 		gc = GameObject.FindGameObjectWithTag ("GameController");
+		infoMsg = GameObject.FindWithTag ("InfoMessage").GetComponent<Text> ();
+		pickupAudio = GetComponent<AudioSource> ();		
 
 		readyToPickup = false;
 		player = GameObject.FindWithTag("Player");
@@ -43,16 +47,16 @@ public class PickUpChainsaw : MonoBehaviour {
 		if (distanceTo < 2.0f) {
 			if (Time.time > nextMessage) {
 				nextMessage = Time.time + messageRate;
-				actionText.text = "Get The Chainsaw";
+				infoMsg.text = "Get The Chainsaw";
 				StartCoroutine ("ClearText");
 			}
 
 			if (Input.GetButtonDown ("Action")) {  
 				//PickupChainsaw ();	// test
 				if (readyToPickup) {
-					PickupChainsaw ();
+					StartCoroutine(PickupChainsaw ());
 				} else {
-					actionText.text = "Chainsaw!!!\nTest Out The Gun First";
+					infoMsg.text = "Chainsaw!!!\nTest Out The Gun First";
 					nextMessage = Time.time + messageRate;
 					StartCoroutine ("ClearText");
 				}
@@ -62,17 +66,21 @@ public class PickUpChainsaw : MonoBehaviour {
 
 	IEnumerator ClearText(){
 		yield return new WaitForSeconds (2);
-		actionText.text = "";
+		infoMsg.text = "";
 	}
 
-	void PickupChainsaw(){
+	IEnumerator PickupChainsaw(){
 		player.GetComponent<WeaponSelect> ().HasChainSaw (true);	// Enable the chainsaw for the player
 
-		actionText.text = "Time To Slice And Dice";
+		infoMsg.text = "Time To Slice And Dice";
 		nextMessage = Time.time + messageRate;
 		StartCoroutine ("ClearText");
 		//playerChainsaw.SetActive (true);
 		//pickupChainsaw.SetActive (false);
+		pickupAudio.Play();                                        	// play the sound effect
+
+		yield return new WaitForSeconds (pickupAudio.clip.length);
+
 		this.gameObject.SetActive (false);
 	}
 }

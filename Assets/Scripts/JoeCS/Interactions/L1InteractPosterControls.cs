@@ -17,11 +17,12 @@ public class L1InteractPosterControls : MonoBehaviour {
 	GameObject mainCam;
 	public float distanceTo;
 
-	public Text actionText;
+	Text infoMsg;
 
 	// Use this for initialization
 	void Start () {
 		mainCam = GameObject.FindGameObjectWithTag ("MainCamera");
+		infoMsg = GameObject.FindWithTag ("InfoMessage").GetComponent<Text> ();
 	}
 
 	void Update() {
@@ -32,13 +33,13 @@ public class L1InteractPosterControls : MonoBehaviour {
 		Debug.Log ("Mouse over Controls Poster");
 
 		if (distanceTo < 2.0f) {
-			actionText.text = "Cheap ass user manual";
+			infoMsg.text = "Cheap ass user manual";
 			StartCoroutine ("ClearText");
 		}
 	}
 
 	IEnumerator ClearText(){
 		yield return new WaitForSeconds (2);
-		actionText.text = "";
+		infoMsg.text = "";
 	}
 }
