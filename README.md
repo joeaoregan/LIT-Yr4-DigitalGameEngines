@@ -5,15 +5,18 @@
 
 ## Joe O'Regan K00203642
 
-### 05/12/2017
+### 22/12/2017
+
+![alt text](https://raw.githubusercontent.com/joeaoregan/Yr4_Digital_Game_Engines_CA/master/Screenshots/ZombieApocaplypseTitle.png "Title Screens")
+###### Zombie Apocalypse Title Screens
+
+Zombie Apocalypse is a 3D First Person Shooter (FPS), created in Unity as part of the CA for the fouth-year Programming Digital Game Engines module of my Game Design and Development course.
+
+![alt text](https://raw.githubusercontent.com/joeaoregan/Yr4_Digital_Game_Engines_CA/master/Screenshots/Menu.png "Game Menu")
+###### Menu
 
 ![alt text](https://raw.githubusercontent.com/joeaoregan/Yr4_Digital_Game_Engines_CA/master/Screenshots/GamePlay1.png "Level 1: Practice Zombies")
 ###### Level 1: Practice Zombies (For Testing Weapons)
-
-![alt text](https://raw.githubusercontent.com/joeaoregan/Yr4_Digital_Game_Engines_CA/master/Screenshots/ReportReady.png "Game Menu")
-
-###### Zombie Apocalypse Menu
-
 
 ### Requirements
 

@@ -3,7 +3,7 @@ using System.Collections;
 
 public class ZombieMovement : MonoBehaviour
 {
-    Transform player;
+    private Transform player;
     //PlayerHealth playerHealth;
     //EnemyHealth enemyHealth;
 	//int playerHealth = 10;
