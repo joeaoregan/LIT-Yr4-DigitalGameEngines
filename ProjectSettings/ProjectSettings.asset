@@ -141,6 +141,7 @@ PlayerSettings:
   targetPixelDensity: 0
   resolutionScalingMode: 0
   applicationIdentifier:
+    Android: lit.JoeORegan.ZombieApocalypse
     Standalone: lit.K00203642.JoeORegan
   buildNumber: {}
   AndroidBundleVersionCode: 1
