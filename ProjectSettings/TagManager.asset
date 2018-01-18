@@ -3,12 +3,7 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags:
-  - Ammo
-  - M9
-  - Target
-  - Zombie
-  - Level1Finish
+  tags: []
   layers:
   - Default
   - TransparentFX
@@ -18,7 +13,7 @@ TagManager:
   - UI
   - 
   - 
-  - Shootable
+  - 
   - 
   - 
   - 

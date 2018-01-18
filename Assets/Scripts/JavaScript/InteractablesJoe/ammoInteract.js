@@ -1,7 +1,7 @@
 ﻿import UnityEngine.UI;
 
 var distanceToObject: float = PlayerCasting.DistanceFromTarget;                                     // Use raycasting to measure the distance
-var TextDisplay: GameObject;                                                                        // The game object to interact with
+var ActionText: GameObject;                                                                        // The game object to interact with
 
 var hasGun: GameObject;
 
@@ -15,10 +15,10 @@ function Update() {
 function OnMouseOver() {                                                                            // When the cursor is over an object
     if (distanceToObject <= 2) {                                                                    // If the distance to an object is less than 2
         if (hasGun.activeSelf) {
-            TextDisplay.GetComponent.<Text>().text = "More ammo is always good"; 					// Display message
+            ActionText.GetComponent.<Text>().text = "More ammo is always good"; 					// Display message
         }
         else {
-            TextDisplay.GetComponent.<Text>().text = "You will need to find a gun first";            // Display message
+            ActionText.GetComponent.<Text>().text = "You will need to find a gun first";            // Display message
         }
     } 
     
@@ -28,5 +28,5 @@ function OnMouseOver() {                                                        
     Clear the action text when the cursor moves away from the object
 */
 function OnMouseExit() {                                                                            // When the cursor is not over an object
-    TextDisplay.GetComponent.<Text>().text = "";                                                    // Clear the text
+    ActionText.GetComponent.<Text>().text = "";                                                    // Clear the text
 }

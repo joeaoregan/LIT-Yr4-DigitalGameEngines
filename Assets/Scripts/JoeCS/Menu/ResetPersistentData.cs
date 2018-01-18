@@ -8,5 +8,6 @@ public class ResetPersistentData : MonoBehaviour {
 	void Start () {
 		PlayerPrefs.SetInt ("Score", 0);	// Reset score
 		PlayerPrefs.SetInt ("Ammo", 0);		// Reset the ammo	
+		PlayerPrefs.SetInt ("Health", 100);	// Reset the health
 	}
 }

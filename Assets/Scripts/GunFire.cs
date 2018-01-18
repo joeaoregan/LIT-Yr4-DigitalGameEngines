@@ -36,7 +36,13 @@ public class GunFire : MonoBehaviour {
     }
     
     private void Update()
-    {
+	{
+		//if (Input.GetAxisRaw ("FireLT") > 0)
+		//	Debug.Log ("Run");
+
+		//if (Input.GetAxisRaw ("FireRT") > 0)
+		//	Debug.Log ("Fire");
+
 		if ((Input.GetButton("Fire1") || Input.GetButtonDown("Fire1") || Input.GetAxisRaw("FireRT") > 0) && Time.time > nextFire)	// left mouse, button 1 gamepad, or gamepad right trigger
         {
             nextFire = Time.time + fireRate;														// Set the time the next fire can occur to the current time + the fire rate

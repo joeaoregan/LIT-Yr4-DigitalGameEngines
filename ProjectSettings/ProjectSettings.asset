@@ -4,14 +4,14 @@
 PlayerSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 12
-  productGUID: 86e56973610795c45b850db7415548cd
+  productGUID: 44702a2c7a56e0a4f8b7f95830574eff
   AndroidProfiler: 0
   defaultScreenOrientation: 4
   targetDevice: 2
   useOnDemandResources: 0
   accelerometerFrequency: 60
-  companyName: JoeORegan-K00203642
-  productName: Yr4-DigitalGameEngines-CA-
+  companyName: ZombieApocalypse
+  productName: JoeORegan-DigitalGameEngines-CA-K00203642
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
   m_SplashScreenBackgroundColor: {r: 0.13725491, g: 0.12156863, b: 0.1254902, a: 1}
@@ -141,7 +141,6 @@ PlayerSettings:
   targetPixelDensity: 0
   resolutionScalingMode: 0
   applicationIdentifier:
-    Android: lit.K00203642.JoeORegan
     Standalone: lit.K00203642.JoeORegan
   buildNumber: {}
   AndroidBundleVersionCode: 1
@@ -228,13 +227,13 @@ PlayerSettings:
     height: 180
     banner: {fileID: 0}
   androidGamepadSupportLevel: 0
-  resolutionDialogBanner: {fileID: 2800000, guid: 9c23efaf8e2d66f4c975d241eb4457a7,
+  resolutionDialogBanner: {fileID: 2800000, guid: 55f87fd46528e934ab5919641fbe3a8c,
     type: 3}
   m_BuildTargetIcons:
   - m_BuildTarget: 
     m_Icons:
     - serializedVersion: 2
-      m_Icon: {fileID: 2800000, guid: 9c23efaf8e2d66f4c975d241eb4457a7, type: 3}
+      m_Icon: {fileID: 2800000, guid: 55f87fd46528e934ab5919641fbe3a8c, type: 3}
       m_Width: 128
       m_Height: 128
   m_BuildTargetBatching: []
@@ -524,14 +523,14 @@ PlayerSettings:
   apiCompatibilityLevelPerPlatform: {}
   m_RenderingPath: 1
   m_MobileRenderingPath: 1
-  metroPackageName: FPS
+  metroPackageName: JoeORegan-DigitalGameEngines-CA-K00203642
   metroPackageVersion: 
   metroCertificatePath: 
   metroCertificatePassword: 
   metroCertificateSubject: 
   metroCertificateIssuer: 
   metroCertificateNotAfter: 0000000000000000
-  metroApplicationDescription: FPS
+  metroApplicationDescription: JoeORegan-DigitalGameEngines-CA-K00203642
   wsaImages: {}
   metroTileShortName: 
   metroCommandLineArgsFile: 
@@ -602,12 +601,11 @@ PlayerSettings:
     daydream:
       daydreamIconForeground: {fileID: 0}
       daydreamIconBackground: {fileID: 0}
-  cloudServicesEnabled:
-    UNet: 1
+  cloudServicesEnabled: {}
   facebookSdkVersion: 7.9.4
   apiCompatibilityLevel: 2
-  cloudProjectId: caee698d-c1ff-49b8-b990-1da4c31e52bf
-  projectName: FPS
+  cloudProjectId: 35c3dca4-4731-4781-bc4b-5a28c0d4a9f5
+  projectName: JoeORegan-DigitalGameEngines-CA-K00203642
   organizationId: k00203642
   cloudEnabled: 0
   enableNativePlatformBackendsForNewInputSystem: 0

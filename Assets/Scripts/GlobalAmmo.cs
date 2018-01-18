@@ -8,7 +8,7 @@ public class GlobalAmmo : MonoBehaviour {
 
     public int CurrentAmmo;
     int InternalAmmo;
-    int LoadedAmmo = 0;
+    int LoadedAmmo = 10;
     public Text AmmoDisplay;
 
 	private int level;

@@ -3,19 +3,31 @@ using System.Collections;
 
 public class ZombieMovement : MonoBehaviour
 {
-    private Transform player;
-    //PlayerHealth playerHealth;
+    private Transform playerPos;
+    PlayerHealth playerHealth;
     //EnemyHealth enemyHealth;
 	//int playerHealth = 10;
     UnityEngine.AI.NavMeshAgent nav;
 
+	//private bool attackPlayer;
+
+	//public bool getAttack(){
+	//	return attackPlayer;
+	//}
+
+	Animator anim;
 
     void Awake ()
-    {
-        player = GameObject.FindGameObjectWithTag ("Player").transform; // can find the player with the Player tag
-        //playerHealth = player.GetComponent <PlayerHealth> ();
+    {		
+        playerPos = GameObject.FindGameObjectWithTag ("Player").transform; // can find the player with the Player tag
+        playerHealth = playerPos.GetComponent <PlayerHealth> ();
         //enemyHealth = GetComponent <EnemyHealth> ();
         nav = GetComponent <UnityEngine.AI.NavMeshAgent> ();
+		anim = GetComponent<Animator> ();
+
+		nav.speed = Random.Range (2, 6);								// Pick a random speed from 2 to 5
+
+		//attackPlayer = true;
     }
 
 	/*
@@ -23,14 +35,14 @@ public class ZombieMovement : MonoBehaviour
 	*/
     void Update ()
 	{
-		//if(enemyHealth.currentHealth > 0 && playerHealth.currentHealth > 0)
-		//if(playerHealth > 0)
-        //{
-            nav.SetDestination (player.position);
-        //}
-       // else
-        //{
-      //      nav.enabled = false;
-      //  }
+		if (!GetComponent<ZombieHealth> ().isWounded() && !GetComponent<ZombieAttack>().IsScreaming()) {
+			if (GetComponent<ZombieHealth> ().currentHealth > 0 && playerHealth.currentHealth > 0) {
+				nav.SetDestination (playerPos.position);
+			} else {
+				nav.enabled = false;
+				if (GetComponent<ZombieHealth> ().currentHealth > 0) 	// If still alive 
+				anim.SetTrigger ("Idle");								// Set to idle animation loop
+			}
+		}
     }
 }
