@@ -5,18 +5,27 @@
 
 ## Joe O'Regan K00203642
 
-### 01/01/2018
-
+### 18/01/2018
+[![YouTube Zombie Apocalypse Gameplay](https://raw.githubusercontent.com/joeaoregan/Yr4_Digital_Game_Engines_CA/master/Screenshots/YouTube.jpg)](https://youtu.be/V1eb564VPUw)
+[Gameplay on YouTube](https://youtu.be/V1eb564VPUw "Zombie Apocalypse Gameplay on YouTube")
+[Trailer YouTube (Created as part of assignment](https://youtu.be/bVB-Gp3zN5s "Zombie Apocalypse Trailer on YouTube")
+[Target Practice on YouTube](https://youtu.be/Zo_g516evQE "Zombie Apocalypse Target Practice on YouTube")
+[Last Minute Random Bits Added on YouTube](https://youtu.be/IDp3Z8KcD6o "Zombie Apocalypse Last Minute Random Bits Added on YouTube")
+[Original Game Audio Tracks on SoundCloud](https://soundcloud.com/joeoregan/sets/zombie-apocalypse "Original Game Audio Tracks on SoundCloud")
 ![alt text](https://raw.githubusercontent.com/joeaoregan/Yr4_Digital_Game_Engines_CA/master/Screenshots/ZombieApocaplypseTitle.png "Title Screens")
 ###### Zombie Apocalypse Title Screens
 
-Zombie Apocalypse is a 3D First Person Shooter (FPS), created in Unity as part of the CA for the fouth-year Programming Digital Game Engines module of my Game Design and Development course.
+Zombie Apocalypse is a 3D First Person Shooter (FPS), created in Unity as part of the CA for the fouth-year Programming Digital Game Engines module of my Game Design and Development course. The game is coded in C#.
 
 ![alt text](https://raw.githubusercontent.com/joeaoregan/Yr4_Digital_Game_Engines_CA/master/Screenshots/Menu.png "Game Menu")
 ###### Menu
 
-![alt text](https://raw.githubusercontent.com/joeaoregan/Yr4_Digital_Game_Engines_CA/master/Screenshots/GamePlay1.png "Level 1: Practice Zombies")
-###### Level 1: Practice Zombies (For Testing Weapons)
+![alt text](https://raw.githubusercontent.com/joeaoregan/Yr4_Digital_Game_Engines_CA/master/Screenshots/GamePlay1.jpg "Level 1: Screenshots")
+###### Level 1: Security Building, Target Practice, Practice Zombies (For Testing Weapons)
+![alt text](https://raw.githubusercontent.com/joeaoregan/Yr4_Digital_Game_Engines_CA/master/Screenshots/GamePlay2.jpg "Level 2: Screenshots")
+###### Level 2: Passageways to underground laboratory
+![alt text](https://raw.githubusercontent.com/joeaoregan/Yr4_Digital_Game_Engines_CA/master/Screenshots/GamePlay3.jpg "Level 3: Screenshots")
+###### Level 3: Great hall and underground research lab
 
 ### Requirements
 
