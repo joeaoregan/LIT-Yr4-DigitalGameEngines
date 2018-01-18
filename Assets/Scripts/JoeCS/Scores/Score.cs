@@ -1,9 +1,4 @@
-﻿// Joe O'Regan
-
-// All Levels
-// Add a score value when an object has been hit by a bullet
-
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 

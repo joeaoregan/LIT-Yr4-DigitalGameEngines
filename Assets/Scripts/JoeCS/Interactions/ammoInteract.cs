@@ -1,10 +1,4 @@
-﻿// Joe O'Regan
-// All Levels
-// Display message after raycasting onto ammo
-// If level 1, and the player hasn't the gun
-// He is told to get the gun
-
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;

@@ -42,7 +42,7 @@ public class CloseZombieSpawnDoor : MonoBehaviour {
 				StartCoroutine ("ClearText");
 				CloseDoor ();
 			} else if (!doorSwitch.activeInHierarchy) {
-				infoMsg.text = "Complete First Objective To Activate";
+				infoMsg.text = "Complete The Objective To Activate";
 				StartCoroutine ("ClearText");
 			}else if (door.activeInHierarchy) {
 				infoMsg.text = "The Door Is Jammed Shut";

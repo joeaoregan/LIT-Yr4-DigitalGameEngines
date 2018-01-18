@@ -1,10 +1,4 @@
-﻿// Joe O'Regan
-// Level 1
-// Pick up the crowbar
-// Display message after raycasting onto object
-// Pick up if action button presed and conditions met
-
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;

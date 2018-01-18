@@ -65,7 +65,7 @@ public class L3Objective2Doors : MonoBehaviour {
 	}
 
 	IEnumerator ObjectiveComplete(){
-		//gc.GetComponent<ObjectiveComplete> ().SetZombiesKilled (true);
+		gc.GetComponent<ObjectiveComplete> ().SetZombiesKilled (true);
 
 		infoMsg.text = "Objective 2:\nClose Doorways To Great Hall Complete";
 		yield return new WaitForSeconds(2);

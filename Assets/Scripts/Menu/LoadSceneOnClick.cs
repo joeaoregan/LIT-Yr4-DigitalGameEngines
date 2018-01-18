@@ -1,7 +1,4 @@
-﻿// Joe O'Regan
-// Load a scene with the index number specified as a parameter
-
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
