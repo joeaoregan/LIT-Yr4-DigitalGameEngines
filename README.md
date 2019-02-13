@@ -1,14 +1,19 @@
 ﻿# Programming Digital Game Engines
-## Assignment 1
+## Joe O'Regan (K00203642)
+### Year 4 (2017/18), Semester 7
+#### BSc Computing (Games Design and Development)
+##### Limerick Institute of Technology
 
-## Zombie Apocalypse
+---
 
-## Joe O'Regan K00203642
-
+## Assignment 1: Zombie Apocalypse
 ### 18/01/2018
+
 Zombie Apocalypse is a 3D First Person Shooter (FPS), created in Unity as part of the CA for the fouth-year Programming Digital Game Engines module of my Game Design and Development course. The game is coded in C#.
+
 #### YouTube Videos and SoundCloud Audio Tracks:
 [![YouTube Zombie Apocalypse Gameplay](https://raw.githubusercontent.com/joeaoregan/Yr4_Digital_Game_Engines_CA/master/Screenshots/YouTube.jpg)](https://youtu.be/V1eb564VPUw)
+
 ###### Other Links:
 * [Trailer YouTube (Created as part of assignment](https://youtu.be/bVB-Gp3zN5s "Zombie Apocalypse Trailer on YouTube")
 * [Gameplay on YouTube](https://youtu.be/V1eb564VPUw "Zombie Apocalypse Gameplay on YouTube")
@@ -16,7 +21,9 @@ Zombie Apocalypse is a 3D First Person Shooter (FPS), created in Unity as part o
 * [Last Minute Random Bits Added on YouTube](https://youtu.be/IDp3Z8KcD6o "Zombie Apocalypse Last Minute Random Bits Added on YouTube")
 * [Original Game Audio Tracks on SoundCloud](https://soundcloud.com/joeoregan/sets/zombie-apocalypse "Original Game Audio Tracks on SoundCloud")
 
-#### Screenshots
+---
+
+## Screenshots
 
 ![alt text](https://raw.githubusercontent.com/joeaoregan/Yr4_Digital_Game_Engines_CA/master/Screenshots/ZombieApocaplypseTitle.png "Title Screens")
 ###### Zombie Apocalypse Title Screens
@@ -31,7 +38,9 @@ Zombie Apocalypse is a 3D First Person Shooter (FPS), created in Unity as part o
 ![alt text](https://raw.githubusercontent.com/joeaoregan/Yr4_Digital_Game_Engines_CA/master/Screenshots/GamePlay3.jpg "Level 3: Screenshots")
 ###### Level 3: Great hall and underground research lab
 
-#### Requirements
+---
+
+## Requirements
 
 You are required to create a 3D game using Unity 2017.1.x based on the theme Shoot ‘em up
 
