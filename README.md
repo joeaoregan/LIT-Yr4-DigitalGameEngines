@@ -2,12 +2,16 @@
 
 ## Joe O'Regan (K00203642)
 
-![GitHub repo size](https://img.shields.io/github/repo-size/joeaoregan/Yr4_Digital_Game_Engines_CA?style=flat-square)
-![GitHub last commit](https://img.shields.io/github/last-commit/joeaoregan/Yr4_Digital_Game_Engines_CA?style=flat-square)
 ![Unity Version](https://img.shields.io/badge/Unity-2017.1.x-blue?style=flat-square&logo=unity)
 ![Language](https://img.shields.io/badge/Language-C%23-green?style=flat-square&logo=c-sharp)
 ![License](https://img.shields.io/github/license/joeaoregan/Yr4_Digital_Game_Engines_CA?style=flat-square)
 ![Platform](https://img.shields.io/badge/Platform-Windows-lightgrey?style=flat-square&logo=windows)
+
+![GitHub repo size](https://img.shields.io/github/repo-size/joeaoregan/Yr4_Digital_Game_Engines_CA?style=flat-square)
+![GitHub last commit](https://img.shields.io/github/last-commit/joeaoregan/Yr4_Digital_Game_Engines_CA?style=flat-square)
+![Stars](https://img.shields.io/github/stars/joeaoregan/Yr4_Digital_Game_Engines_CA?style=social)
+
+---
 
 ### Year 4 (2017/18), Semester 7
 
@@ -82,3 +86,17 @@ Requirements for the game are as follows
 9. Provide a 30 seconds to 1 minute video trailer showing actual game footage for your game.
 
 </details>
+
+---
+
+<div align="center">
+
+[![GitHub](https://img.shields.io/badge/GitHub-181717?style=flat&logo=github&logoColor=white)](https://github.com/joeaoregan)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?style=flat&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/joeaoregan/)
+[![Email](https://img.shields.io/badge/Email-D14836?style=flat&logo=gmail&logoColor=white)](mailto:joeaoregan@yahoo.ie)
+
+&copy; 2017 Joe O'Regan &bull; LIT | Programming Digital Game Engines
+
+[⬆️ Back to Top](#)
+
+</div>
