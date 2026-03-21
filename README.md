@@ -2,6 +2,13 @@
 
 ## Joe O'Regan (K00203642)
 
+![GitHub repo size](https://img.shields.io/github/repo-size/joeaoregan/Yr4_Digital_Game_Engines_CA?style=flat-square)
+![GitHub last commit](https://img.shields.io/github/last-commit/joeaoregan/Yr4_Digital_Game_Engines_CA?style=flat-square)
+![Unity Version](https://img.shields.io/badge/Unity-2017.1.x-blue?style=flat-square&logo=unity)
+![Language](https://img.shields.io/badge/Language-C%23-green?style=flat-square&logo=c-sharp)
+![License](https://img.shields.io/github/license/joeaoregan/Yr4_Digital_Game_Engines_CA?style=flat-square)
+![Platform](https://img.shields.io/badge/Platform-Windows-lightgrey?style=flat-square&logo=windows)
+
 ### Year 4 (2017/18), Semester 7
 
 #### BSc Computing (Games Design and Development)
