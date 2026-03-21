@@ -97,6 +97,6 @@ Requirements for the game are as follows
 
 &copy; 2017 Joe O'Regan &bull; LIT | Programming Digital Game Engines
 
-[⬆️ Back to Top](#LIT-Yr4-DigitalGameEngines)
+[⬆️ Back to Top](#lit-yr4-digitalgameengines)
 
 </div>
