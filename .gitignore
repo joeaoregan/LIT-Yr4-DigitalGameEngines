@@ -1,4 +1,5 @@
 # Git files
+.vscode/
 .gitignore
 .gitattributes
 README.md
@@ -53,3 +54,5 @@ README.md
 /Assets/Textures/
 /Assets/Textures and Sprites/
 
+# Local dev
+dev/
