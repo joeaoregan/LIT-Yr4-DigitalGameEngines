@@ -1,0 +1,68 @@
+site_name: LIT-Yr4-DigitalGameEngines Documentation
+site_url: https://joeaoregan.github.io/LIT-Yr4-DigitalGameEngines/
+
+repo_url: https://github.com/joeaoregan/LIT-Yr4-DigitalGameEngines
+repo_name: GitHub
+
+docs_dir: docs
+site_dir: site
+theme:
+  logo: images/logo1.png
+  palette: 
+
+    # Palette toggle for dark mode
+    - scheme: slate
+      toggle:
+        icon: material/weather-sunny
+        name: Switch to light mode
+
+    # Palette toggle for light mode
+    - scheme: default
+      toggle:
+        icon: material/weather-night
+        name: Switch to dark mode
+
+  name: material
+  favicon: images/favicon_nurse.png
+  features:
+    - navigation.tabs
+    - navigation.tabs.sticky
+    - navigation.sections
+    - toc.follow
+    - navigation.footer
+    - navigation.instant.preview
+    - navigation.tracking
+    - navigation.path
+    - navigation.top
+
+nav:
+  - Home: 
+    - Overview: index.md
+    - External Links:
+      - Level 1: https://joeoregan.itch.io/za1
+      - Level 2: https://joeoregan.itch.io/za2
+      - Github: https://github.com/joeaoregan/LIT-Yr4-DigitalGameEngines
+  - Level 1: level1.md
+  - Level 2: level2.md
+  - Level 3: level3.md
+  - Controls: controls.md
+  - Weapons: weapons.md
+  - Interactions: interactions.md
+  - Development History: dev-history.md
+  - Technical Notes: technical-notes.md
+  - VR Experiments: vr.md
+  - Credits: credits.md
+  
+markdown_extensions:
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - def_list
+  
+  - material.extensions.preview:
+      configurations:
+        - targets:
+            include:
+              - index.md
