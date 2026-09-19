@@ -23,7 +23,12 @@
 **Course**: BSc Computing (Games Design and Development)  
 **Module**: Programming Digital Game Engines
 
+
 ---
+
+## Assignment 1: Zombie Apocalypse (18/01/2018)
+
+<img src="docs/images/logo1.png" width="320" />
 
 [Play Level 1 on itch.io](https://joeoregan.itch.io/za1)  
 [Play Level 2 on itch.io](https://joeoregan.itch.io/za2)  
@@ -31,12 +36,6 @@
 
 > [!TIP]
 > Aim for the head!!!
-
-## Assignment 1: Zombie Apocalypse
-
-<img src="docs/images/logo1.png" width="320" />
-
-### 18/01/2018
 
 Zombie Apocalypse is a 3D First Person Shooter (FPS), created in Unity as part of the CA for the fouth-year Programming Digital Game Engines module of my Game Design and Development course. The game is coded in C#.
 
