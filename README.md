@@ -26,10 +26,11 @@
 ---
 
 [Play Level 1 on itch.io](https://joeoregan.itch.io/za1)  
-[Play Level 2 on itch.io](https://joeoregan.itch.io/za2)
+[Play Level 2 on itch.io](https://joeoregan.itch.io/za2)  
+[Play Level 3 on itch.io](https://joeoregan.itch.io/za3)
 
 > [!TIP]
-> Go for headshots!!!
+> Aim for the head!!!
 
 ## Assignment 1: Zombie Apocalypse
 
