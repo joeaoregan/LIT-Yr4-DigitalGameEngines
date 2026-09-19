@@ -59,10 +59,6 @@ Zombie Apocalypse is a 3D First Person Shooter (FPS), created in Unity as part o
 
 ###### Zombie Apocalypse Title Screens
 
-![alt text](https://raw.githubusercontent.com/joeaoregan/Yr4_Digital_Game_Engines_CA/master/Screenshots/Menu.png "Game Menu")
-
-###### Menu
-
 ![alt text](https://raw.githubusercontent.com/joeaoregan/Yr4_Digital_Game_Engines_CA/master/Screenshots/GamePlay1.jpg "Level 1: Screenshots")
 
 ###### Level 1: Security Building, Target Practice, Practice Zombies (For Testing Weapons)
@@ -74,6 +70,10 @@ Zombie Apocalypse is a 3D First Person Shooter (FPS), created in Unity as part o
 ![alt text](https://raw.githubusercontent.com/joeaoregan/Yr4_Digital_Game_Engines_CA/master/Screenshots/GamePlay3.jpg "Level 3: Screenshots")
 
 ###### Level 3: Great hall and underground research lab
+
+![alt text](https://raw.githubusercontent.com/joeaoregan/Yr4_Digital_Game_Engines_CA/master/Screenshots/Menu.png "Game Menu")
+
+###### Menu
 
 ---
 
