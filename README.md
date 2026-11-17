@@ -15,6 +15,10 @@
 
 ---
 
+<div align="center">
+<img src="docs\images\svg\za-title-red.svg" alt="Zombie Apocalypse Title" width="400px" />
+</div>
+
 ### Limerick Institute of Technology
 ####  Year 4 (2017/18), Semester 7
 
